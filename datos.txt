@@ -1,0 +1,8 @@
+CARRERA: Diseño y programación web
+MATERIA: Portales y comercios electronico
+AÑO: 2025
+TURNO: NOCHE
+COMISION: DWN4AV
+APELLIDO Y NOMBRE: Fiorotto Mateo
+DOCENTE: Villafañe Victor Emanuel
+CARACTER DE ENTREGA: 1er parcial

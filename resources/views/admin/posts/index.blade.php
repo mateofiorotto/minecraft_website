@@ -4,7 +4,23 @@
 
         <h2 class="mt-5 mb-5 text-center fw-bold">Administrar Posts</h2>
 
-        <div class="text-center mb-4 mb-5">
+        @if (session()->has('feedback.message'))
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    Swal.fire({
+                        icon: 'success',
+                        title: '¡Éxito!',
+                        html: `{!! session()->get('feedback.message') !!}`,
+                        background: '#533c14',
+                        color: '#ffffff',
+                        confirmButtonColor: '#3c9f2f',
+                        confirmButtonText: 'Aceptar'
+                    });
+                });
+            </script>
+        @endif
+
+        <div class="text-center mt-5 mb-5">
             <a href="{{ route('posts.create') }}" class="crear fw-bold btn btn-primary"><i
                     class="me-2 bi bi-plus align-middle"><span class="d-none">Icono de crear</span></i>Crear nuevo
                 POST</a>
@@ -40,10 +56,12 @@
                             <td class="p-3 text-center">{{ $post->category->name }}</td>
                             <td class="p-3 text-center iconos-acciones">
                                 <div class="ps-5 pe-5 pt-2 pb-2 col d-flex justify-content-center gap-2 mt-2 mt-md-0">
-                                    <a href="{{ route('posts.edit', $post->id) }}" class="me-2 editar btn btn-sm btn-primary">
+                                    <a href="{{ route('posts.edit', $post->id) }}"
+                                        class="me-2 editar btn btn-sm btn-primary">
                                         <i class="bi bi-pencil-square"><span class="d-none">Icono de editar</span></i>
                                     </a>
-                                    <a href="{{ route('posts.delete', $post->id) }}" class="borrar btn btn-sm btn-danger">
+                                    <a href="{{ route('posts.delete', $post->id) }}"
+                                        class="borrar btn btn-sm btn-danger">
                                         <i class="bi bi-trash3-fill"><span class="d-none">Icono de borrar</span></i>
                                     </a>
                                 </div>

@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('image', 100);
             $table->boolean('active'); //si esta activa o no, para poder deshablitar noticias sin borrarlas
             $table->unsignedBigInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('restrict');
             $table->timestamps();
             $table->softDeletes(); //borrado logico
         });

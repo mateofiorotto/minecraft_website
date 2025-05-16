@@ -17,38 +17,54 @@
     <header id="header">
         <nav class="navbar navbar-expand-lg">
             <div class="container">
-              <a class="navbar-brand" href="#">Logo MC</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                  <li class="nav-item">
-                    <x-nav-link route="dashboard">Dashboard</x-nav-link>
-                  </li>
-                  <li class="nav-item">
-                    <x-nav-link route="posts.index">Posts</x-nav-link>
-                  </li>
-                  <li class="nav-item">
-                    <x-nav-link route="editions.index">Ediciones</x-nav-link>
-                  </li>
-                  <li class="nav-item">
-                    <x-nav-link route="categories.index">Categorias</x-nav-link>
-                  </li>
-                  <li class="nav-item">
-                    <x-nav-link route="tags.index">Etiquetas</x-nav-link>
-                  </li>
-                  <li class="nav-item">
-                    <x-nav-link route="users.index">Usuarios</x-nav-link>
-                  </li>
-                </ul>
-              </div>
-                {{-- Botones login --}}
-                {{-- <ul>
-        
-                </ul> --}}
+                <!-- logo -->
+                <a id="logo" class="navbar-brand" href="{{ route('home') }}"><span class="d-none">Logo
+                        MC</span></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <!-- izq -->
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <x-nav-link route="dashboard">Dashboard</x-nav-link>
+                        </li>
+                        <li class="nav-item">
+                            <x-nav-link route="posts.index">Posts</x-nav-link>
+                        </li>
+                        <li class="nav-item">
+                            <x-nav-link route="editions.index">Ediciones</x-nav-link>
+                        </li>
+                        <li class="nav-item">
+                            <x-nav-link route="categories.index">Categorias</x-nav-link>
+                        </li>
+                        <li class="nav-item">
+                          <x-nav-link route="users.index">Usuarios</x-nav-link>
+                        </li>
+                    </ul>
+
+                    <!-- derecha -->
+                    <ul class="navbar-nav ms-auto d-flex align-items-center" id="auth-acciones">
+                            <li class="nav-item me-3">
+                                <span>{{ Auth::user()->name }}</span>
+                            </li>
+
+                              <li class="nav-item me-2 home-li">
+                                  <x-nav-link route="home" class="btn btn-outline-primary px-3"><i class="bi bi-house home"><span class="d-none">Icono de home</span></i></x-nav-link>
+                              </li>
+
+                            <li class="nav-item logout-li">
+                                <form method="POST" action="{{ route('auth.logout') }}">
+                                    @csrf
+                                    <button type="submit" class="btn logout-btn"><i class="bi bi-box-arrow-in-right logout"><span class="d-none">Icono de logout</span></i></button>
+                                </form>
+                            </li>
+                    </ul>
+                </div>
             </div>
-          </nav>
+        </nav>
     </header>
 
     <main>
@@ -56,5 +72,6 @@
             {{$slot}}
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/js/bootstrap.bundle.min.js" integrity="sha384-YUe2LzesAfftltw+PEaao2tjU/QATaW/rOitAq67e0CT0Zi2VVRL0oC4+gAaeBKu" crossorigin="anonymous"></script>
-  </body>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
 </html>

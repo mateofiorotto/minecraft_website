@@ -98,7 +98,9 @@ class AdminPostsController extends Controller
 
         Post::create($validated);
 
-        return redirect()->route('posts.index');
+        return redirect()
+        ->route('posts.index')
+        ->with('feedback.message', 'El post <strong>' . e($validated['title']) . '</strong> ha sido creado con exito');
     }
 
     /**
@@ -134,7 +136,9 @@ class AdminPostsController extends Controller
 
     $post->update($validated);
 
-    return redirect()->route('posts.index');
+     return redirect()
+        ->route('posts.index')
+        ->with('feedback.message', 'El post <strong>' . e($validated['title']) . '</strong> ha sido editado con exito');
 }
 
     /**
@@ -151,7 +155,9 @@ class AdminPostsController extends Controller
 
         $post->delete();
 
-        return redirect()->route('posts.index');
+         return redirect()
+        ->route('posts.index')
+        ->with('feedback.message', 'El post <strong>' . e($post['title']) . '</strong> ha sido eliminado con exito');
     }
 
 }

@@ -35,12 +35,12 @@
 
             <div class="mb-5 mt-5 col-12 text-center mb-3">
               <h3 class="fw-bold">Imagen:</h3>
-              <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->title }}" class="img-fluid">
+              <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->title }}" class="mt-3 img-fluid">
             </div>
 
             <div class="text-center mb-5 mt-5 col-12 mb-3">
               <h3 class="fw-bold">Contenido:</h3>
-              <p>{{ $post->content }}</p>
+              <p class="text-break">{{ $post->content }}</p>
             </div>
         </div>
 
@@ -50,7 +50,7 @@
             @csrf
             @method('DELETE')
             <div class="mb-5 text-center">
-              <button class="btn p-3 btn-danger borrar-post" type="submit">Borrar</button>
+              <button class="btn p-3 btn-danger borrar-crud" type="submit">Borrar</button>
             </div>
         </form>
     </section>

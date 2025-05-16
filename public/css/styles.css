@@ -67,20 +67,60 @@ header nav li {
   font-size: 1.25em !important;
 }
 
-header nav a {
+header nav a, #auth-acciones {
   color: white !important;
 }
 
+.dashboard-li i {
+  color: white !important;
+  transition: all 0.3s ease-in-out;
+}
+
+.logout-li i {
+  color: white !important;
+  font-size: 1.4em !important;
+  transition: all 0.3s ease-in-out;
+}
+
+.logout-li button:hover i, .dashboard-li a i:hover {
+  color: #3c9f2f !important;
+}
+
+#logo {
+  background-image: url('/storage/static-images/logo.webp');
+  background-size: cover;
+  background-position: center;
+  width: 200px !important;
+  height: 100px !important;
+}
+
+.iniciar-sesion a {
+  color: white !important;
+  transition: all 0.3s ease-in-out;
+}
+
+.iniciar-sesion a:hover {
+  color: #3c9f2f !important;
+}
+
 /*footer*/
+#logo-footer{
+  background-image: url('/storage/static-images/logo.webp');
+  background-size: cover;
+  background-position: center;
+  width: 250px !important;
+  height: 150px !important;
+}
+
 footer {
-  padding: 2em !important;
+  padding: 5em !important;
   background-color: black !important;
 }
 
 /* HOME  banner*/
 #banner {
   width: 100%;
-  height: 90vh;
+  height: 85vh;
   background-image: url('/storage/static-images/minecraft-banner.webp');
   background-size: cover;
   background-position: center;
@@ -101,6 +141,26 @@ footer {
   margin-bottom: 0.5em !important;
   text-transform: uppercase;
   font-weight: bold !important;
+}
+
+/*LOGIN*/
+form label {
+  font-size: 1.25em !important;
+  font-weight: bold;
+  margin: 0.5em 0 !important;
+}
+
+#login button {
+  background-color: #3c9f2f !important;
+  transition: all 0.2s ease-in-out;
+  border: none !important;
+  font-size: 1.2em !important;
+  font-weight: bold !important;
+  text-transform: uppercase !important;
+}
+
+#login button:hover {
+  background-color: rgb(32, 129, 190) !important;
 }
 
 

@@ -41,6 +41,29 @@ header a {
   color: white !important;
 }
 
+.home-li i {
+  color: white !important;
+  transition: all 0.3s ease-in-out;
+}
+
+.logout-li i {
+  color: white !important;
+  font-size: 1.4em !important;
+  transition: all 0.3s ease-in-out;
+}
+
+.logout-li button:hover i, .home-li a i:hover {
+  color: #3c9f2f !important;
+}
+
+#logo {
+  background-image: url('/storage/static-images/logo.webp');
+  background-size: cover;
+  background-position: center;
+  width: 200px !important;
+  height: 100px !important;
+}
+
 /*crud*/
 .encabezados {
   background-color: #3c9f2f !important;
@@ -59,7 +82,7 @@ td{
     background-color: rgb(109, 77, 22) !important;
     color: white !important;
     word-break: break-word;
-  max-width: 150px;
+    max-width: 150px;
 }
 
 .links-nav-paginacion p {
@@ -73,7 +96,7 @@ td{
 }
 
 .page-link {
-  background-color: rgb(109, 77, 22) !important;
+  background-color: #6d4d16 !important;
   color: white !important;
 }
 
@@ -87,23 +110,27 @@ td{
   border: none;
 }
 
-.iconos-acciones .editar, .editar-post {
+.iconos-acciones .editar, .editar-crud {
   background-color: rgb(32, 129, 190) !important;
   transition: all 0.2s ease-in-out;
   border: none;
 }
 
-.iconos-acciones .borrar:hover, .iconos-acciones .editar:hover, .crear-post:hover, .editar-post:hover, .borrar-post:hover {
+.iconos-acciones .borrar:hover, .iconos-acciones .editar:hover, .crear-crud:hover, .editar-crud:hover, .borrar-crud:hover {
   background-color: #3c9f2f !important;
 }
 
-.crear, .crear-post {
+.crear {
+  font-size: 1.2em !important;
+}
+
+.crear, .crear-crud {
   background-color: #3c9f2f !important;
   transition: all 0.2s ease-in-out;
   border: none !important;
 }
 
-.crear:hover, .crear-post:hover{
+.crear:hover, .crear-crud:hover{
   background-color: rgb(32, 129, 190) !important;
 }
 
@@ -113,9 +140,38 @@ form label {
   margin: 0.5em 0 !important;
 }
 
-.editar-post, .crear-post, .borrar-post {
+.editar-crud, .crear-crud, .borrar-crud {
   font-size: 1.2em !important;
   font-weight: bold !important;
   text-transform: uppercase;
   border: none !important;
+}
+
+/*DASHBOARD*/
+.lista-dashboard {
+  font-size: 1.5em !important;
+}
+
+.lista-dashboard a{
+  color: white !important;
+  transition: all 0.3s ease-in-out;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+#dashboard p a {
+  font-size: 1.5em !important;
+  color: #3c9f2f !important;
+  transition: all 0.3s ease-in-out;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+#dashboard p a:hover {
+  color: #1fff02 !important;
+}
+
+.lista-dashboard a:hover {
+  color: #3c9f2f !important;
 }

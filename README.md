@@ -28,7 +28,7 @@ In my case, the project includes 4 tables: users, categories (for posts), posts,
 
 - The user table must include at least 3 fields: an ID, a username, and a password.
 
-In this project, the user table includes the required fields, plus a role and email field (as well as the default timestamps).
+In this project, the user table includes the required fields, plus a role field (as well as the default timestamps).
 
 - At least one of the other tables must have 5 fields (excluding primary key and timestamps).
 
@@ -140,7 +140,7 @@ En mi caso, el proyecto cuenta con 4 tablas: usuarios, categorias (para los post
 
 - La tabla de usuario debe contar con al menos 3 campos: uno para ID, otro username y otro password.
 
-En este proyecto el usuario cuenta con las tablas requeridas y se agrega la tabla rol y email (ademas de los timestamps que vienen por defecto).
+En este proyecto el usuario cuenta con las tablas requeridas y se agrega la tabla rol (ademas de los timestamps que vienen por defecto).
 
 - Al menos una de las otras tablas debe constituirse de 5 campos sin contar PK y los campos de fechas
 
@@ -184,16 +184,13 @@ Proximamente se agregará alertas por si el post fue creado/editado/eliminado co
 --- 
 
 ### Falta por hacer (esta sección sera eliminada luego):
-- Autenticación para entrar al admin
-- Alertas del crud
-- Paginas login
-- Paginas CRUD para todas las entidades
+- cambiar color btn hamburguesa
+- Pagina register. Modif usuario ?. Revisar auth y validar auth
+- Paginas CRUD para todas las entidades (proximo paso)
 - Estilizacion de la web
-- Middlewares (junto con auth)
 - Chequear semantica
-- Documentar todo con phpdoc
 - Hacer bien el contenido de los seeders
-- SoftDeletes: que no rompan nada si estan relacionados con otras clases por ejemplo
+
 
 Se evaluará y tendrá impacto en la nota también:
 - Complejidad de la tarea realizada.

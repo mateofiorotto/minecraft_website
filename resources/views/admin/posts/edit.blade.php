@@ -6,13 +6,19 @@
         <p class="text-center">Editaras el post: {{ $post->title }}</p>
 
         @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    Swal.fire({
+                        icon: 'error',
+                        title: '¡Error!',
+                        html: `Revisa los errores marcados`,
+                        background: '#533c14',
+                        color: '#ffffff',
+                        confirmButtonColor: '#3c9f2f',
+                        confirmButtonText: 'Aceptar'
+                    });
+                });
+            </script>
         @endif
 
         <form action="{{ route('posts.update', $post->id) }}" method="POST" enctype="multipart/form-data"
@@ -20,36 +26,67 @@
             @csrf
             @method('PUT')
 
-            <div class="row">
+            <div class="row justify-content-center align-items-center">
                 <div class="col-lg-6 col-md-12 mb-3">
                     <label for="title" class="form-label">Título</label>
                     <input type="text" name="title" id="title" class="form-control"
                         value="{{ old('title', $post->title) }}">
+
+                    @if ($errors->has('title'))
+                        <div class="mt-2 text-danger">
+                            <p>{{ $errors->first('title') }}</p>
+                        </div>
+                    @endif
                 </div>
 
                 <div class="col-lg-6 col-md-12 mb-3">
                     <label for="subtitle" class="form-label">Subtítulo</label>
                     <input type="text" name="subtitle" id="subtitle" class="form-control"
                         value="{{ old('subtitle', $post->subtitle) }}">
+
+                    @if ($errors->has('subtitle'))
+                        <div class="mt-2 text-danger">
+                            <p>{{ $errors->first('subtitle') }}</p>
+                        </div>
+                    @endif
                 </div>
 
                 <div class="col-12 mb-3">
                     <label for="content" class="form-label">Contenido</label>
                     <textarea name="content" id="content" rows="5" class="form-control">{{ old('content', $post->content) }}</textarea>
+
+                    @if ($errors->has('content'))
+                        <div class="mt-2 text-danger">
+                            <p>{{ $errors->first('content') }}</p>
+                        </div>
+                    @endif
                 </div>
 
                 <div class="col-lg-6 col-md-12 mb-3">
                     <label for="image" class="form-label">Imagen</label>
                     <input type="file" name="image" id="image" class="form-control">
+
+                    @if ($errors->has('image'))
+                        <div class="mt-2 text-danger">
+                            <p>{{ $errors->first('image') }}</p>
+                        </div>
+                    @endif
                 </div>
 
                 <div class="col-lg-6 col-md-12 mb-3">
                     <label for="active" class="form-label">Estado</label>
                     <select name="active" id="active" class="form-select">
-                        <option value="1" {{ old('active', $post->active) == 1 ? 'selected' : '' }}>Activo</option>
+                        <option value="1" {{ old('active', $post->active) == 1 ? 'selected' : '' }}>Activo
+                        </option>
                         <option value="0" {{ old('active', $post->active) == 0 ? 'selected' : '' }}>Desactivado
                         </option>
                     </select>
+
+                    @if ($errors->has('active'))
+                        <div class="mt-2 text-danger">
+                            <p>{{ $errors->first('active') }}</p>
+                        </div>
+                    @endif
                 </div>
 
                 <div class="col-lg-6 col-md-12 mb-3">
@@ -59,7 +96,7 @@
                     @endif
                 </div>
 
-                <div class="col-lg-6 col-md-12 mb-3">
+                <div class="col-lg-6 col-md-12 mb-5">
                     <label for="category_id" class="form-label">Categoría</label>
                     <select name="category_id" id="category_id" class="form-select">
                         @foreach ($categories as $category)
@@ -70,10 +107,16 @@
                     </select>
                     <p class="mt-3">¿No está la categoría que buscas? <a href="{{ route('categories.create') }}">Crea
                             una</a></p>
+
+                    @if ($errors->has('categor_id'))
+                        <div class="mt-2 text-danger">
+                            <p>{{ $errors->first('category_id') }}</p>
+                        </div>
+                    @endif
                 </div>
 
                 <div class="mb-5 text-center">
-                    <button class="btn p-3 btn-primary editar-post" type="submit">Editar</button>
+                    <button class="btn p-3 btn-primary editar-crud" type="submit">Editar</button>
                 </div>
             </div>
         </form>

@@ -1,13 +1,16 @@
 <x-layout-admin>
     <x-slot:title>Dashboard</x-slot:title>
-    <h2>Dashboard</h2>
-    <p>This is the dashboard for the admin, here you can see and manage all editions, posts, categories and tags of the website.</p>
+    <section class="container" id="dashboard">
+        <h2 class="mt-5 mb-5 pt-5 pb-5 text-center fw-bold">Dashboard</h2>
 
-    <ul>
-        <li><a href="{{ route('posts.index') }}">Posts</a></li>
-        <li><a href="{{ route('editions.index') }}">Ediciones</a></li>
-        <li><a href="{{ route('categories.index') }}">Categorias</a></li>
-        <li><a href="{{ route('tags.index') }}">Etiquetas</a></li>
-        <li><a href="{{ route('users.index') }}">Usuarios</a></li>
+    <ul class="list-unstyled row lista-dashboard text-center pt-5 mt-5">
+        <li class="col-lg-3 col-md-12"><a href="{{ route('posts.index') }}"><i class="me-3 bi bi-newspaper"><span class="d-none">Icono de posts</span></i>Posts</a></li>
+        <li class="col-lg-3 col-md-12"><a href="{{ route('editions.index') }}"><i class="me-3 bi bi-joystick"><span class="d-none">Icono de ediciones</span></i>Ediciones</a></li>
+        <li class="col-lg-3 col-md-12"><a href="{{ route('categories.index') }}"><i class="me-3 bi bi-tags"><span class="d-none">Icono de categorias</span></i>Categorias</a></li>
+        <li class="col-lg-3 col-md-12"><a href="{{ route('users.index') }}"><i class="me-3 bi bi-people"><span class="d-none">Icono de usuarios</span></i>Usuarios</a></li>
+        
     </ul>
+
+    <p class="pt-5 mt-5 text-center"><a href="{{ route('home') }}">Volver a la home</a></p>
+    </section>
 </x-layout-admin>

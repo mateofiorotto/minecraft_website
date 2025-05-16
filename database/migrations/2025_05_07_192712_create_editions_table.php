@@ -21,6 +21,7 @@ return new class extends Migration
             $table->boolean('bestseller');
             $table->decimal('price', 8, 2);
             $table->timestamps();
+            $table->softDeletes(); //borrado logico
         });
     }
 

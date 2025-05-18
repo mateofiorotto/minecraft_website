@@ -1,9 +1,8 @@
-<!--FORM PARA EDITAR POSTS-->
 <x-layout-admin>
-    <x-slot:title>Editar Post: {{ $post->title }}</x-slot:title>
-    <section class="container" id="edit-posts">
-        <h2 class="mt-5 mb-5 text-center fw-bold">Editar Post</h2>
-        <p class="text-center">Editaras el post: {{ $post->title }}</p>
+    <x-slot:title>Editar Edicion: {{ $edition->title }}</x-slot:title>
+    <section class="container" id="edit-editionss">
+        <h2 class="mt-5 mb-5 text-center fw-bold">Editar Edicion</h2>
+        <p class="text-center">Editaras la edicion: {{ $edition->title }}</p>
 
         @if ($errors->any())
             <script>
@@ -21,7 +20,7 @@
             </script>
         @endif
 
-        <form action="{{ route('posts.update', $post->id) }}" method="POST" enctype="multipart/form-data"
+        <form action="{{ route('editions.update', $edition->id) }}" method="POST" enctype="multipart/form-data"
             class="container mt-4 mb-5">
             @csrf
             @method('PUT')
@@ -30,7 +29,7 @@
                 <div class="col-lg-6 col-md-12 mb-3">
                     <label for="title" class="form-label">Título</label>
                     <input type="text" name="title" id="title" class="form-control"
-                        value="{{ old('title', $post->title) }}">
+                        value="{{ old('title', $edition->title) }}">
 
                     @if ($errors->has('title'))
                         <div class="mt-2 text-danger">
@@ -42,7 +41,7 @@
                 <div class="col-lg-6 col-md-12 mb-3">
                     <label for="subtitle" class="form-label">Subtítulo</label>
                     <input type="text" name="subtitle" id="subtitle" class="form-control"
-                        value="{{ old('subtitle', $post->subtitle) }}">
+                        value="{{ old('subtitle', $edition->subtitle) }}">
 
                     @if ($errors->has('subtitle'))
                         <div class="mt-2 text-danger">
@@ -53,7 +52,7 @@
 
                 <div class="col-12 mb-3">
                     <label for="content" class="form-label">Contenido</label>
-                    <textarea name="content" id="content" rows="5" class="form-control">{{ old('content', $post->content) }}</textarea>
+                    <textarea name="content" id="content" rows="5" class="form-control">{{ old('content', $edition->content) }}</textarea>
 
                     @if ($errors->has('content'))
                         <div class="mt-2 text-danger">
@@ -74,43 +73,36 @@
                 </div>
 
                 <div class="col-lg-6 col-md-12 mb-3">
-                    <label for="active" class="form-label">Estado</label>
-                    <select name="active" id="active" class="form-select">
-                        <option value="1" {{ old('active', $post->active) == 1 ? 'selected' : '' }}>Activo
+                    <label for="bestseller" class="form-label">Bestseller</label>
+                    <select name="bestseller" id="bestseller" class="form-select">
+                        <option value="1" {{ old('bestseller', $edition->bestseller) == 1 ? 'selected' : '' }}>Si
                         </option>
-                        <option value="0" {{ old('active', $post->active) == 0 ? 'selected' : '' }}>Desactivado
+                        <option value="0" {{ old('bestseller', $edition->bestseller) == 0 ? 'selected' : '' }}>No
                         </option>
                     </select>
 
-                    @if ($errors->has('active'))
+                    @if ($errors->has('bestseller'))
                         <div class="mt-2 text-danger">
-                            <p>{{ $errors->first('active') }}</p>
+                            <p>{{ $errors->first('bestseller') }}</p>
                         </div>
                     @endif
                 </div>
 
                 <div class="col-lg-6 col-md-12 mb-3">
                     <p>Imagen actual:</p>
-                    @if ($post->image)
-                        <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->title }}" class="mb-3 img-fluid">
+                    @if ($edition->image)
+                        <img src="{{ asset('storage/' . $edition->image) }}" alt="{{ $edition->title }}" class="mb-3 img-fluid">
                     @endif
                 </div>
 
                 <div class="col-lg-6 col-md-12 mb-5">
-                    <label for="category_id" class="form-label">Categoría</label>
-                    <select name="category_id" id="category_id" class="form-select">
-                        @foreach ($categories as $category)
-                            <option value="{{ $category->id }}"
-                                {{ old('category_id', $post->category_id) == $category->id ? 'selected' : '' }}>
-                                {{ $category->name }}</option>
-                        @endforeach
-                    </select>
-                    <p class="mt-3">¿No está la categoría que buscas? <a href="{{ route('categories.create') }}">Crea
-                            una</a></p>
+                     <label for="price" class="form-label">Precio</label>
+                    <input type="text" name="price" id="price" class="form-control"
+                        value="{{ old('price', $edition->price) }}">
 
-                    @if ($errors->has('categor_id'))
+                    @if ($errors->has('price'))
                         <div class="mt-2 text-danger">
-                            <p>{{ $errors->first('category_id') }}</p>
+                            <p>{{ $errors->first('price') }}</p>
                         </div>
                     @endif
                 </div>

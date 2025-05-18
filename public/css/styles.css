@@ -36,6 +36,22 @@ img {
   margin: auto;
 }
 
+
+.links-nav-paginacion p {
+  color: white !important;
+}
+
+.pagination .active span {
+  background-color: #3c9f2f !important;
+  border-color: #3c9f2f !important;
+  color: white !important;
+}
+
+.page-link {
+  background-color: #6d4d16 !important;
+  color: white !important;
+}
+
 /*404*/
 #error-404 img {
   width: 25% !important;
@@ -135,6 +151,16 @@ footer {
   margin-top: 15em !important;
 }
 
+.tarjetas {
+  overflow-x: hidden;
+}
+
+/*HOME iframe*/
+iframe {
+  width: 100% !important;
+  height: 80vh !important;
+}
+
 /*POSTS*/
 #posts h3 {
   font-size: 1.25em !important;
@@ -150,7 +176,7 @@ form label {
   margin: 0.5em 0 !important;
 }
 
-#login button {
+#login button, #register button {
   background-color: #3c9f2f !important;
   transition: all 0.2s ease-in-out;
   border: none !important;
@@ -162,6 +188,23 @@ form label {
 #login button:hover {
   background-color: rgb(32, 129, 190) !important;
 }
+
+/*REGISTER*/
+.registrarse {
+  background-color: #3c9f2f !important;
+  transition: all 0.2s ease-in-out;
+  border: none !important;
+  font-size: 1.2em !important;
+  font-weight: bold !important;
+  text-transform: uppercase !important;
+  transition: all 0.3s ease-in-out;
+}
+
+.registrarse:hover {
+  background-color: rgb(32, 129, 190) !important;
+}
+
+
 
 
 @media screen and (max-width: 991px) {

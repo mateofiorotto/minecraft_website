@@ -2,11 +2,7 @@
     <x-slot:title> {{ $post->title }} </x-slot:title>
     <section class="container" id="post">
         <h2> {{ $post->title }}</h2>
-        <p>{{ $post->category->name }}</p>
-
-        <p>{{ $post->subtitle }}</p> <!--Esto tendra un font size mayor-->
-
-        <p class="post-contenido">{{ $post->content }}</p>
+        <p>{{ $post->content }}</p>
         <img src="{{ asset('storage/'.$post->image) }}" alt="{{ $post->title }}">
     </section>
 </x-layout>

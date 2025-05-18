@@ -1,9 +1,9 @@
 <!--CONFIRMAR ANTES DE BORRAR-->
 <x-layout-admin>
-    <x-slot:title>{{ $category->title }}</x-slot:title>
-    <section class="container" id="create-categories">
+    <x-slot:title>Eliminar categoria: {{ $category->name }}</x-slot:title>
+    <section class="container" id="delete-categories">
         <h2 class="mt-5 mb-5 text-center fw-bold">Eliminar CATEGORIA</h2>
-        <p class="text-center mb-5">¿Seguro que quieres borrar la categoria: {{ $category->title }}?</p>
+        <p class="text-center mb-5">¿Seguro que quieres borrar la categoria: {{ $category->name }}?</p>
         
         <div class="row justify-content-center align-items-center">
 

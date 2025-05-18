@@ -119,16 +119,31 @@ un servicio de hosting, servicio de auditoría, servicio de desarrollo,
 producto con suscripción (ej: un antivirus, una app online como
 Figma), un videojuego, etc. No es necesaria la implementación de
 un carrito de compras.
+
+Mi sitio web es acerca del videojuego Minecraft. La idea de la web es que se pueda vender cualquiera de las ediciones publicadas.
+
 - Incluir una sección de blog/novedades/noticias donde se hable del
 servicio/producto o de temas relacionados.
+
+Se incluye una seccion "noticias" 
+
 - Incluir una home que presente el producto.
+
+La home presenta al videojuego en general.
 
 ### Admin/Backend
 - Requerir de una autenticación para acceder.
+
+El CRUD requiere que la persona que quiera ingresar este logueado y su rol sea "admin", de lo contrario no podra acceder al administrador.
+
 - Proveer de un ABM para administrar las entradas del
 blog/novedades/noticias
 
-Ambos deben ofrecer estructura semantica y estilizacion.
+- Cuenta con un CRUD para posteos, categorias, usuarios y ediciones.
+
+- Ambos deben ofrecer estructura semantica y estilizacion.
+
+Ambos cuentan con estructura semantica HTML y estilizacion personalizada con bootstrap y CSS.
 
 ---
 
@@ -151,7 +166,7 @@ La tabla de posts cuenta con 7 campos también: titulo, subtitulo, contenido, im
 - Toda la creación de tablas, y la carga inicial de datos, deberá estar realizada con migrations y seeders.
 
 La aplicación cuenta con migraciones y seeders que se encargan de realizar la creación y la carga de datos en la base de datos.
-Correr comando: ````php artisan migrate:fresh --seed```
+Ejecutar el comando: ````php artisan migrate:fresh --seed```
 
 ---
 
@@ -172,7 +187,7 @@ También se hacen validaciones por si algun registro no es encontrado, redirecci
 - Debe proveerse de mensajes de feedback al usuario sobre lo ocurrido para facilitar la comprensión de la web.
 
 Se utiliza $errors en las vistas para informar de errores al crear o editar incorrectamente. También hay una página de 404.
-Proximamente se agregará alertas por si el post fue creado/editado/eliminado correctamente en el index del CRUD respectivo segun la entidad.
+Se agregan alertas en el crud y el login con sweetalert2.
 
 ---
 
@@ -180,17 +195,21 @@ Proximamente se agregará alertas por si el post fue creado/editado/eliminado co
 - Se agrego paginación
 - phpDoc
 - Tabla categorias
+- Registro
+- Alertas con sweetalert2
 
 --- 
 
 ### Falta por hacer (esta sección sera eliminada luego):
+HOY: 
 - cambiar color btn hamburguesa
-- Pagina register. Modif usuario ?. Revisar auth y validar auth
-- Paginas CRUD para todas las entidades (proximo paso)
-- Estilizacion de la web
-- Chequear semantica
-- Hacer bien el contenido de los seeders
 
+MAÑANA
+- Info home
+- Estilizacion de la web
+- Chequear semantica y validar html en lo posible, no cuenta el swal2
+- Hacer bien el contenido de los seeders
+- Cargar imgs
 
 Se evaluará y tendrá impacto en la nota también:
 - Complejidad de la tarea realizada.

@@ -13,8 +13,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [FrontendController::class, 'home'])->name('home');
 Route::get('/posts', [FrontendController::class, 'posts'])->name('posts');
 Route::get('/posts/{id}', [FrontendController::class, 'postById'])->name('post')->whereNumber('id');
-Route::get('/contact', [FrontendController::class, 'contact'])->name('contact');
 Route::get('/editions', [FrontendController::class, 'editions'])->name('editions');
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/contact', [FrontendController::class, 'contact'])->name('contact');
+    Route::post('/response-contact', [FrontendController::class, 'responseContact'])->name('response-contact');
+});
 
 //rutas backend
 //Dashboard
@@ -36,13 +40,12 @@ Route::group (['middleware' => ['auth', 'admin']], function () {
     Route::get('/admin/users/{id}/delete', [AdminUsersController::class, 'delete'])->name('users.delete');
 });
 
-
-
-
 //Rutas AUTH
 Route::get('/login', [AuthController::class, 'login'])->name('auth.login');
 Route::post('/login', [AuthController::class, 'auth'])->name('auth.authenticate');
 Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
+Route::get('/register', [AuthController::class, 'register'])->name('auth.register');
+Route::post('/register', [AuthController::class, 'createNewUser'])->name('auth.createNewUser');
 
 //rutas crud con resource
 /**

@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ $title ?? '' }} | Minecraft</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('storage/static-images/favicon.webp') }}">
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-DQvkBjpPgn7RC31MCQoOeC9TI2kdqa4+BSgNMNj8v77fdC77Kj5zpWFTJaaAoMbC" crossorigin="anonymous">
@@ -14,10 +15,10 @@
         href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 
 <body>
-
     <header id="header">
         <nav class="navbar navbar-expand-lg">
             <div class="container">
@@ -39,7 +40,7 @@
                             <x-nav-link route="editions">Ediciones</x-nav-link>
                         </li>
                         <li class="nav-item">
-                            <x-nav-link route="posts">Posts</x-nav-link>
+                            <x-nav-link route="posts">Noticias</x-nav-link>
                         </li>
                         <li class="nav-item">
                             <x-nav-link route="contact">Contacto</x-nav-link>
@@ -47,17 +48,17 @@
                     </ul>
 
                     <!-- derecha -->
-                    <ul class="navbar-nav ms-auto d-flex align-items-center" id="auth-acciones">
+                    <ul class="navbar-nav ms-auto d-flex align-items-baseline align-items-lg-center text-center" id="auth-acciones">
                         @guest
                             <!-- Usuario NO autenticado -->
-                            <li class="nav-item me-2 iniciar-sesion">
+                            
+                            <li class="nav-item me-3 iniciar-sesion mb-3 mb-lg-0">
                                 <x-nav-link route="auth.login" class="btn btn-outline-primary px-3 ">Iniciar
                                     sesión</x-nav-link>
                             </li>
-                            {{-- <li class="nav-item me-2">
-                                <x-nav-link route="auth.register"
-                                    class="btn btn-primary nav-link px-3">Registrarse</x-nav-link>
-                            </li> --}}
+                            <li class="nav-item registrarse pe-2 ps-2">
+                                <x-nav-link route="auth.register" class="btn btn-outline-primary px-3 ">Registrarse</x-nav-link>
+                            </li>
                         @else
                             <!-- Usuario autenticado -->
                             <li class="nav-item me-3">
@@ -66,14 +67,17 @@
 
                             @if (Auth::user()->role === 'admin')
                                 <li class="nav-item me-2 dashboard-li">
-                                    <x-nav-link route="dashboard" class="btn btn-outline-primary px-3"><i class="bi bi-speedometer2 dashboard"><span class="d-none">Icono de dashboard</span></i></x-nav-link>
+                                    <x-nav-link route="dashboard" class="btn btn-outline-primary px-3"><i
+                                            class="bi bi-speedometer2 dashboard"><span class="d-none">Icono de
+                                                dashboard</span></i></x-nav-link>
                                 </li>
                             @endif
 
                             <li class="nav-item logout-li">
                                 <form method="POST" action="{{ route('auth.logout') }}">
                                     @csrf
-                                    <button type="submit" class="btn"><i class="bi bi-box-arrow-in-right logout"><span class="d-none">Icono de logout</span></i></button>
+                                    <button type="submit" class="btn"><i class="bi bi-box-arrow-in-right logout"><span
+                                                class="d-none">Icono de logout</span></i></button>
                                 </form>
                             </li>
                         @endguest
@@ -99,9 +103,9 @@
                     <h2>Explora</h2>
                     <ul class="list-unstyled">
                         <li><a href="{{ route('home') }}">Home</a></li>
-                        <li><a href="{{ route('editions') }}">Editions</a></li>
-                        <li><a href="{{ route('posts') }}">Posts</a></li>
-                        <li><a href="{{ route('contact') }}">Contact</a></li>
+                        <li><a href="{{ route('editions') }}">Ediciones</a></li>
+                        <li><a href="{{ route('posts') }}">Noticias</a></li>
+                        <li><a href="{{ route('contact') }}">Contacto</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-4 col-md-12">
@@ -120,6 +124,10 @@
         integrity="sha384-YUe2LzesAfftltw+PEaao2tjU/QATaW/rOitAq67e0CT0Zi2VVRL0oC4+gAaeBKu" crossorigin="anonymous">
     </script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
 </body>
 
 </html>

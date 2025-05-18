@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Edition;
 
 class FrontendController extends Controller
 {
@@ -24,7 +25,7 @@ class FrontendController extends Controller
      */
     public function posts(){
         
-        $posts = Post::all();
+        $posts = Post::where('active', true)->paginate(6);
 
         return view('posts', ['posts' => $posts]);
     }
@@ -53,6 +54,8 @@ class FrontendController extends Controller
 
     public function editions()
     {
-        return view('editions');
+        $editions = Edition::all();
+
+        return view('editions', ['editions' => $editions]);
     }
 }

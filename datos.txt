@@ -8,6 +8,13 @@ APELLIDO Y NOMBRE: Fiorotto Mateo
 DOCENTE: Villafañe Victor Emanuel
 CARACTER DE ENTREGA: 1er parcial
 
+ACLARACION, ejecutar los siguientes comandos
+```composer install```
+```php artisan migrate```
+```php artisan db:seed```
+```php artisan storage:link```
+```npm install```
+
 ----------------------------------
 Punto por punto pauta:
 Este sitio es un proyecto para la facultad. La consigna se basa en un producto/servicio que se ofrezca para la venta. En este caso, el videojuego "Minecraft" con 3 ediciones.

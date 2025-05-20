@@ -158,7 +158,11 @@ Create and set your environment variables correctly (.env)
 
 4. Enter to the project folder (with the CLI) and run:
 
-```php artisan migrate:fresh --seed```
+```composer install```
+```php artisan migrate```
+```php artisan db:seed```
+```php artisan storage:link```
+```npm install```
 
 If the CLI ask you to create a database, write yes
 
@@ -301,7 +305,11 @@ Crea y pone tus variables de entorno correcamente (.env)
 
 4. Entra a la carpeta del proyecto (con la CLI) y ejecuta:
 
-```php artisan migrate:fresh --seed```
+```composer install```
+```php artisan migrate```
+```php artisan db:seed```
+```php artisan storage:link```
+```npm install```
 
 Si la CLI the pregunta para crear una base de datos, escribi yes
 

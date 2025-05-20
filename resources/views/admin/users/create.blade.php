@@ -1,6 +1,6 @@
 <!--FORM PARA CREAR POSTS-->
 <x-layout-admin>
-    <x-slot:name>Crear un nuevo usuario</x-slot:name>
+    <x-slot:title>Crear un nuevo usuario</x-slot:title>
     <section class="container" id="create-posts">
         <h2 class="mt-5 mb-5 text-center fw-bold">Crear nuevo usuario</h2>
 
@@ -59,7 +59,7 @@
                 </div>
 
                 <div class="col-lg-6 col-md-12 mb-3">
-                    <label for="password_confirmation" class="form-label">Confirmar Contraseña</label>
+                    <label for="password_confirmation" class="form-label">Confirmar Contraseña</label>
                     <input type="password" name="password_confirmation" id="password_confirmation" class="form-control">
                 </div>
 

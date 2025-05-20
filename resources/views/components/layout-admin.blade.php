@@ -1,6 +1,6 @@
 <!--LAYOUT BLADE-->
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -47,20 +47,29 @@
                     </ul>
 
                     <!-- derecha -->
-                    <ul class="navbar-nav ms-auto d-flex align-items-center" id="auth-acciones">
+                   <ul class="navbar-nav ms-auto d-flex align-items-baseline align-items-lg-center text-center mt-2 mt-lg-0"
+                        id="auth-acciones">
                             <li class="nav-item me-3">
                                 <span>{{ Auth::user()->name }}</span>
                             </li>
 
-                              <li class="nav-item me-2 home-li">
-                                  <x-nav-link route="home" class="btn btn-outline-primary px-3"><i class="bi bi-house home"><span class="d-none">Icono de home</span></i></x-nav-link>
-                              </li>
+                            <li>
+                              <ul class="list-unstyled d-flex align-items-center gap-3 mt-lg-0 mt-2">
+                                    <li class="nav-item me-2 home-li">
+                                        <x-nav-link route="home" class="btn btn-outline-primary px-3"><i
+                                                class="bi bi-house home"><span class="d-none">Icono de
+                                                    home</span></i></x-nav-link>
+                                    </li>
 
-                            <li class="nav-item logout-li">
-                                <form method="POST" action="{{ route('auth.logout') }}">
-                                    @csrf
-                                    <button type="submit" class="btn logout-btn"><i class="bi bi-box-arrow-in-right logout"><span class="d-none">Icono de logout</span></i></button>
-                                </form>
+                                <li class="nav-item logout-li">
+                                    <form method="POST" action="{{ route('auth.logout') }}">
+                                        @csrf
+                                        <button class="btn p-0" type="submit"><i
+                                                class="bi bi-box-arrow-in-right logout"><span class="d-none">Icono de
+                                                    logout</span></i></button>
+                                    </form>
+                                </li>
+                            </ul>
                             </li>
                     </ul>
                 </div>

@@ -1,5 +1,6 @@
 CARRERA: Diseño y programación web
-MATERIA: Portales y comercios electronico
+MATERIA: Portales y comercios electronicos
+CUATRIMESTRE: Primer cuatrimestre
 AÑO: 2025
 TURNO: NOCHE
 COMISION: DWN4AV

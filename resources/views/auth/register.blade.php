@@ -42,9 +42,9 @@
 
             <div class="row justify-content-center align-items-center">
 
-                <div class="col-6 mb-5">
+                <div class="col-lg-6 col-md-10 mb-5">
                     <label for="name" class="form-label">Nombre</label>
-                    <input type="name" name="name" id="name" class="form-control"
+                    <input type="text" name="name" id="name" class="form-control"
                         value="{{ old('name') }}">
 
                     @if ($errors->has('name'))
@@ -54,9 +54,9 @@
                     @endif
 
                 </div>
-                <div class="col-6 mb-5">
+                <div class="col-lg-6 col-md-10 mb-5">
                     <label for="username" class="form-label">Usuario</label>
-                    <input type="username" name="username" id="username" class="form-control"
+                    <input type="text" name="username" id="username" class="form-control"
                         value="{{ old('username') }}">
 
                     @if ($errors->has('username'))
@@ -67,7 +67,7 @@
 
                 </div>
 
-                <div class="col-6 mb-5">
+                <div class="col-lg-6 col-md-10 mb-5">
                     <label for="password" class="form-label">Contraseña</label>
                     <input type="password" name="password" id="password" class="form-control">
 
@@ -78,13 +78,13 @@
                     @endif
                 </div>
 
-                <div class="col-6 mb-5">
+                <div class="col-lg-6 col-md-10 mb-5">
                     <label for="password_confirmation" class="form-label">Confirmar Contraseña</label>
                     <input type="password" name="password_confirmation" id="password_confirmation" class="form-control"
                         value="{{ old('password_confirmation') }}">
                 </div>
 
-                <div class="col-6 mb-5">
+                <div class="col-lg-6 col-md-10 mb-5">
                     <label for="email" class="form-label">Email</label>
                     <input type="email" name="email" id="email" class="form-control"
                         value="{{ old('email') }}">

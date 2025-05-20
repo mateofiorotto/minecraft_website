@@ -1,6 +1,6 @@
 <!--FORM PARA EDITAR POSTS-->
 <x-layout-admin>
-    <x-slot:name>Editar User: {{ $user->username }}</x-slot:name>
+    <x-slot:title>Editar User: {{ $user->username }}</x-slot:title>
     <section class="container" id="edit-users">
         <h2 class="mt-5 mb-5 text-center fw-bold">Editar User</h2>
         <div class="row justify-content-center align-items-center text-center">
@@ -76,7 +76,7 @@
                 </div>
 
                 <div class="col-lg-6 col-md-12 mb-5">
-                    <label for="password_confirmation" class="form-label">Confirmar Contraseña</label>
+                    <label for="password_confirmation" class="form-label">Confirmar Contraseña</label>
                     <input type="password" name="password_confirmation" id="password_confirmation" class="form-control"
                         value="{{ old('password_confirmation', $user->password) }}">
                 </div>

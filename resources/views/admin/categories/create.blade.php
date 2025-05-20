@@ -1,5 +1,5 @@
 <x-layout-admin>
-    <x-slot:name>Crear una nueva categoria</x-slot:name>
+    <x-slot:title>Crear una nueva categoria</x-slot:title>
     <section class="container" id="create-categories">
         <h2 class="mt-5 mb-5 text-center fw-bold">Crear nueva categoria</h2>
 

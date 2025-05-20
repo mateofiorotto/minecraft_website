@@ -26,7 +26,8 @@
                 POST</a>
         </div>
 
-        <div class="row mb-5 d-flex align-items-center">
+        <div class="row mb-5 d-flex align-items-center p-4 p-lg-0">
+            <div class="table-responsive">
             <table class="table">
                 <!--Encabezados-->
                 <thead class="encabezados">
@@ -70,6 +71,7 @@
                     @endforeach
                 </tbody>
             </table>
+        </div>
         </div>
 
         <div class="links-nav-paginacion mt-5 mb-5">

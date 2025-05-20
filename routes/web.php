@@ -14,10 +14,15 @@ Route::get('/', [FrontendController::class, 'home'])->name('home');
 Route::get('/posts', [FrontendController::class, 'posts'])->name('posts');
 Route::get('/posts/{id}', [FrontendController::class, 'postById'])->name('post')->whereNumber('id');
 Route::get('/editions', [FrontendController::class, 'editions'])->name('editions');
+Route::get('/editions/{id}', [FrontendController::class, 'editionById'])->name('edition')->whereNumber('id');
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/contact', [FrontendController::class, 'contact'])->name('contact');
     Route::post('/response-contact', [FrontendController::class, 'responseContact'])->name('response-contact');
+    //si un user quiere entrar x url al response, redirigir al contact    
+    Route::get('/response-contact', function () {
+    return redirect()->route('contact')->with('feedback.message', 'Debes enviar el formulario correctamente.');
+    });
 });
 
 //rutas backend
@@ -47,6 +52,10 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 Route::get('/register', [AuthController::class, 'register'])->name('auth.register');
 Route::post('/register', [AuthController::class, 'createNewUser'])->name('auth.createNewUser');
 
+//para que error 404 tome el usuario si esta logueado
+Route::fallback(function(){
+    return view('errors.404');
+});
 //rutas crud con resource
 /**
  * Index --> mostrar todos los posts

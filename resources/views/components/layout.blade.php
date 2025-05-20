@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="utf-8">
@@ -48,16 +48,18 @@
                     </ul>
 
                     <!-- derecha -->
-                    <ul class="navbar-nav ms-auto d-flex align-items-baseline align-items-lg-center text-center" id="auth-acciones">
+                    <ul class="navbar-nav ms-auto d-flex align-items-baseline align-items-lg-center text-center mt-2 mt-lg-0"
+                        id="auth-acciones">
                         @guest
                             <!-- Usuario NO autenticado -->
-                            
+
                             <li class="nav-item me-3 iniciar-sesion mb-3 mb-lg-0">
                                 <x-nav-link route="auth.login" class="btn btn-outline-primary px-3 ">Iniciar
                                     sesión</x-nav-link>
                             </li>
                             <li class="nav-item registrarse pe-2 ps-2">
-                                <x-nav-link route="auth.register" class="btn btn-outline-primary px-3 ">Registrarse</x-nav-link>
+                                <x-nav-link route="auth.register"
+                                    class="btn btn-outline-primary px-3 ">Registrarse</x-nav-link>
                             </li>
                         @else
                             <!-- Usuario autenticado -->
@@ -65,22 +67,27 @@
                                 <span>{{ Auth::user()->name }}</span>
                             </li>
 
-                            @if (Auth::user()->role === 'admin')
-                                <li class="nav-item me-2 dashboard-li">
-                                    <x-nav-link route="dashboard" class="btn btn-outline-primary px-3"><i
-                                            class="bi bi-speedometer2 dashboard"><span class="d-none">Icono de
-                                                dashboard</span></i></x-nav-link>
-                                </li>
-                            @endif
+                            <li>
+                                <ul class="list-unstyled d-flex align-items-center gap-3 mt-lg-0 mt-2">
+                                    @if (Auth::user()->role === 'admin')
+                                        <li class="nav-item me-2 dashboard-li">
+                                            <x-nav-link route="dashboard" class="btn btn-outline-primary px-3"><i
+                                                    class="bi bi-speedometer2 dashboard"><span class="d-none">Icono de
+                                                        dashboard</span></i></x-nav-link>
+                                        </li>
+                                    @endif
 
-                            <li class="nav-item logout-li">
-                                <form method="POST" action="{{ route('auth.logout') }}">
-                                    @csrf
-                                    <button type="submit" class="btn"><i class="bi bi-box-arrow-in-right logout"><span
-                                                class="d-none">Icono de logout</span></i></button>
-                                </form>
-                            </li>
-                        @endguest
+                                    <li class="nav-item logout-li">
+                                        <form method="POST" action="{{ route('auth.logout') }}">
+                                            @csrf
+                                            <button class="btn p-0" type="submit"><i
+                                                    class="bi bi-box-arrow-in-right logout"><span class="d-none">Icono de
+                                                        logout</span></i></button>
+                                        </form>
+                                    </li>
+                                </ul>
+                            <li>
+                            @endguest
                     </ul>
                 </div>
             </div>
@@ -93,28 +100,33 @@
     </main>
     <footer id="footer">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-12">
-                    <a class="d-block" id="logo-footer" href="{{ route('home') }}"><span class="d-none">Logo
+            <div class="row justify-content-center align-items-center gap-5 gap-lg-0">
+                <div class="col-lg-4 col-md-12 text-center">
+                    <a class="d-block m-auto" id="logo-footer" href="{{ route('home') }}"><span class="d-none">Logo
                             MC</span></a>
-                    <p class="text-light">Deja volar tu imaginación</p>
+                    <p class="text-light mt-4 volar">Deja volar tu imaginación</p>
                 </div>
-                <div class="col-lg-4 col-md-12">
+                <div class="col-lg-4 col-md-12 text-center">
                     <h2>Explora</h2>
                     <ul class="list-unstyled">
-                        <li><a href="{{ route('home') }}">Home</a></li>
-                        <li><a href="{{ route('editions') }}">Ediciones</a></li>
+                        <li class=""><a href="{{ route('home') }}">Home</a></li>
+                        <li class="nav-link"><a href="{{ route('editions') }}">Ediciones</a></li>
                         <li><a href="{{ route('posts') }}">Noticias</a></li>
                         <li><a href="{{ route('contact') }}">Contacto</a></li>
                     </ul>
                 </div>
-                <div class="col-lg-4 col-md-12">
-                    <h2>Seguinos</h2>
-                    <ul>
-                        <li><a href="#">Facebook</a></li>
-                        <li><a href="#">Twitter</a></li>
-                        <li><a href="#">Github</a></li>
-                        <li><a href="#">Instagram</a></li>
+                <div class="col-lg-4 col-md-12 text-center">
+                    <h2 class="pb-2">Seguinos</h2>
+                    <ul class="list-unstyled d-flex gap-5 justify-content-center align-items-center">
+                        <li><a target="_blank" rel="noopener noreferrer" href="https://x.com/Minecraft"><i
+                                    class="bi bi-twitter-x"><span class="d-none">X</span></i></a></li>
+                        <li><a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/minecraft"><i
+                                    class="bi bi-instagram"><span class="d-none">Instagram</span></i></a></li>
+                        <li><a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/minecraft"><i
+                                    class="bi bi-youtube"><span class="d-none">YouTube</span></i></a></li>
+                        <li><a target="_blank" rel="noopener noreferrer"
+                                href="https://www.github.com/mateofiorotto"><i class="bi bi-github"><span
+                                        class="d-none">Github</span></i></a></li>
                     </ul>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 <x-layout-admin>
-    <x-slot:name>Editar Categoria: {{ $category->name }}</x-slot:name>
+    <x-slot:title>Editar Categoria: {{ $category->name }}</x-slot:title>
     <section class="container" id="edit-categories">
         <h2 class="mt-5 mb-5 text-center fw-bold">Editar Categoria</h2>
         <p class="text-center">Editaras la categoria: {{ $category->name }}</p>

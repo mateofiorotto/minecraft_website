@@ -48,7 +48,7 @@ header a {
 
 .logout-li i {
   color: white !important;
-  font-size: 1.4em !important;
+  font-size: 1.5em !important;
   transition: all 0.3s ease-in-out;
 }
 
@@ -62,6 +62,16 @@ header a {
   background-position: center;
   width: 200px !important;
   height: 100px !important;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+.navbar-toggler:focus,
+.navbar-toggler:active,
+.navbar-toggler-icon:focus {
+    outline: 2px solid #3c9f2f !important;
 }
 
 /*crud*/
@@ -175,3 +185,12 @@ form label {
 .lista-dashboard a:hover {
   color: #3c9f2f !important;
 }
+
+@media screen and (max-width: 575px) {
+        .links-nav-paginacion {
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+        }
+
+ }

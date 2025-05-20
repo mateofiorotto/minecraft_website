@@ -1,225 +1,474 @@
 /* Generales */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden !important;
 }
 
 body {
-  background-color: rgb(49, 49, 49) !important;
-  color: white !important;
-  font-family: "Montserrat", sans-serif !important;
+    background-color: rgb(49, 49, 49) !important;
+    color: white !important;
+    font-family: "Montserrat", sans-serif !important;
+    overflow-x: hidden !important;
 }
 
 h2 {
-  font-size: 2.25em !important;
-  margin-bottom: 1em !important;
-  text-transform: uppercase;
-  font-weight: bolder !important;
+    font-size: 2.25em !important;
+    margin-bottom: 1em !important;
+    text-transform: uppercase;
+    font-weight: bolder !important;
 }
 
 h3 {
-  font-size: 1.75em !important;
-  margin-bottom: 0.5em !important;
-  text-transform: uppercase;
-  font-weight: bold !important;
+    font-size: 1.75em !important;
+    margin-bottom: 0.5em !important;
+    text-transform: uppercase;
+    font-weight: bold !important;
 }
 
 p {
-  font-size: 1.25em !important;
+    font-size: 1.25em !important;
 }
 
 img {
-  width: 100% !important;
-  display: block !important;
-  margin: auto;
+    width: 100% !important;
+    display: block !important;
+    margin: auto;
 }
 
-
 .links-nav-paginacion p {
-  color: white !important;
+    color: white !important;
 }
 
 .pagination .active span {
-  background-color: #3c9f2f !important;
-  border-color: #3c9f2f !important;
-  color: white !important;
+    background-color: #3c9f2f !important;
+    border-color: #3c9f2f !important;
+    color: white !important;
 }
 
 .page-link {
-  background-color: #6d4d16 !important;
-  color: white !important;
+    background-color: #6d4d16 !important;
+    color: white !important;
+}
+
+.pagination {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;    
 }
 
 /*404*/
 #error-404 img {
-  width: 25% !important;
+    width: 25% !important;
 }
 
 #error-404 a {
-  text-transform: uppercase;
-  color: #41c430 !important;
-  font-weight: bold !important;
-  font-size: 1.5em !important;
-  text-decoration: none;
-  transition: all 0.3s ease-in-out;
+    text-transform: uppercase;
+    color: #41c430 !important;
+    font-weight: bold !important;
+    font-size: 2em !important;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
 }
 
 #error-404 a:hover {
-  color: #1fff02 !important;
+    color: #1fff02 !important;
 }
 
 /* HEADER*/
 #header {
-  background-color: black !important;
+    background-color: black !important;
 }
 
 header nav {
-  padding: 2em !important;
+    padding: 2em !important;
 }
 
-header nav li {
-  font-size: 1.25em !important;
+header nav li{
+    font-size: 1.25em !important;
 }
 
-header nav a, #auth-acciones {
-  color: white !important;
+header nav a,
+#auth-acciones {
+    color: white !important;
 }
 
 .dashboard-li i {
-  color: white !important;
-  transition: all 0.3s ease-in-out;
+    color: white !important;
+    transition: all 0.3s ease-in-out;
 }
 
 .logout-li i {
-  color: white !important;
-  font-size: 1.4em !important;
-  transition: all 0.3s ease-in-out;
+    color: white !important;
+    font-size: 1.5em !important;
+    transition: all 0.3s ease-in-out;
 }
 
-.logout-li button:hover i, .dashboard-li a i:hover {
-  color: #3c9f2f !important;
+.logout-li button:hover i,
+.dashboard-li a i:hover {
+    color: #3c9f2f !important;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+.navbar-toggler:focus,
+.navbar-toggler:active,
+.navbar-toggler-icon:focus {
+    outline: 2px solid #3c9f2f !important;
 }
 
 #logo {
-  background-image: url('/storage/static-images/logo.webp');
-  background-size: cover;
-  background-position: center;
-  width: 200px !important;
-  height: 100px !important;
+    background-image: url("/storage/static-images/logo.webp");
+    background-size: cover;
+    background-position: center;
+    width: 200px !important;
+    height: 100px !important;
 }
 
 .iniciar-sesion a {
-  color: white !important;
-  transition: all 0.3s ease-in-out;
+    color: white !important;
+    transition: all 0.3s ease-in-out;
 }
 
 .iniciar-sesion a:hover {
-  color: #3c9f2f !important;
+    color: #3c9f2f !important;
 }
 
 /*footer*/
-#logo-footer{
-  background-image: url('/storage/static-images/logo.webp');
-  background-size: cover;
-  background-position: center;
-  width: 250px !important;
-  height: 150px !important;
+#logo-footer {
+    background-image: url("/storage/static-images/logo.webp");
+    background-size: cover;
+    background-position: center;
+    width: 300px !important;
+    height: 70px !important;
 }
 
 footer {
-  padding: 5em !important;
-  background-color: black !important;
+    padding: 5em !important;
+    background-color: black !important;
+}
+
+#footer ul li {
+    font-size: 1.35em !important;
+    margin-bottom: 0.5em !important;
+
+}
+
+#footer ul li a {
+    text-decoration: none !important;
+        color: white !important;
+        transition: all 0.3s ease-in-out;
+}
+
+#footer ul li i {
+    font-size: 1.5em !important;
+}
+
+#footer ul li a:hover {
+    color: #1fff02 !important;
+}
+
+#footer h2 {
+    margin-bottom: 0.5em !important;
+}
+
+.volar {
+    font-size: 1.5em !important;
 }
 
 /* HOME  banner*/
 #banner {
-  width: 100%;
-  height: 85vh;
-  background-image: url('/storage/static-images/minecraft-banner.webp');
-  background-size: cover;
-  background-position: center;
+    width: 100%;
+    height: 85vh;
+    background-image: url("/storage/static-images/minecraft-banner.webp");
+    background-size: cover;
+    background-position: center;
 }
 
 #banner img {
-  display: block;
+    display: block;
 }
 
 /*HOME tarjetas*/
 .tarjeta-derecha {
-  margin-top: 15em !important;
+    margin-top: 15em !important;
 }
 
 .tarjetas {
-  overflow-x: hidden;
+    overflow-x: hidden;
 }
 
 /*HOME iframe*/
 iframe {
-  width: 100% !important;
-  height: 80vh !important;
+    width: 100% !important;
+    height: 80vh !important;
+}
+
+.btn-comprar-home {
+    background-color: #3c9f2f !important;
+    transition: all 0.2s ease-in-out;
+    border: none !important;
+    font-size: 1.35em !important;
+    font-weight: bold !important;
+    text-transform: uppercase !important;
+    transition: all 0.3s ease-in-out;
+    padding: 2em !important;
+    text-decoration: none !important;
+    color: white;
+    display: block;
+    width: 50%;
+    margin: auto !important;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-comprar-home:hover {
+    background-color: rgb(32, 129, 190) !important;
 }
 
 /*POSTS*/
 #posts h3 {
-  font-size: 1.25em !important;
-  margin-bottom: 0.5em !important;
-  text-transform: uppercase;
-  font-weight: bold !important;
+    font-size: 1.25em !important;
+    margin-bottom: 0.5em !important;
+    text-transform: uppercase;
+    font-weight: bold !important;
+}
+
+.filtrar-categoria {
+    width: 25%;
+}
+
+.form-select {
+    background-color: black !important;
+    color: white !important;
+    font-size: 1.2em !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='white' viewBox='0 0 16 16'%3E%3Cpath d='M1.5 5.5l6 6 6-6'/%3E%3C/svg%3E") !important;
+}
+
+.form-select option:checked {
+    font-weight: bold;
+}
+
+.contenedor-posteo-tarjeta {
+    padding: 1.5em;
+    background-color: black !important;
+}
+
+.posteo-tarjeta {
+  background-color: black !important;
+    text-decoration: none !important;
+    color: white !important;
+    padding: 0em !important;
+}
+
+/*EDICIONES*/
+.contenedor-edicion-tarjeta {
+    padding: 1.5em;
+    background-color: black !important;
+}
+
+.bestseller .contenedor-edicion-tarjeta {
+    background-color: rgb(109, 77, 22) !important;
+}
+
+.edicion-tarjeta {
+    background-color: black !important;
+    text-decoration: none !important;
+    color: white !important;
+    padding: 0em !important;
+}
+
+.animar-tarjeta {
+    transition: all 0.3s ease-in-out;
+}
+
+.animar-tarjeta:hover {
+    transform: scale(1.035);
+}
+
+.precio-edicion {
+    font-size: 1.75em !important;
+    color: #1fff02 !important;
+}
+
+.precio {
+    color: #1fff02 !important;
+    font-size: 1.5em !important;
+}
+
+.comprar-edicion-btn {
+    background-color: #3c9f2f !important;
+    transition: all 0.2s ease-in-out;
+    border: none !important;
+    font-size: 1.2em !important;
+    font-weight: bold !important;
+    text-transform: uppercase !important;
+    transition: all 0.3s ease-in-out;
+    padding: 1em !important;
+    text-decoration: none !important;
+    color: white;
+    display: block;
+    width: 30%;
+    transition: all 0.3s ease-in-out;
+}
+
+.comprar-edicion-btn:hover {
+    background-color: rgb(32, 129, 190) !important;
+}
+
+/*CONTACTO*/
+.btn-enviar-contacto {
+    background-color: #3c9f2f !important;
+    transition: all 0.2s ease-in-out;
+    padding: 1em 3.5em !important;
+    color: white !important;
+    border: none !important;
+    font-size: 1.5em !important;
+    font-weight: bold !important;
+    text-transform: uppercase !important;
+}
+
+.btn-enviar-contacto:hover {
+    background-color: rgb(32, 129, 190) !important;
 }
 
 /*LOGIN*/
 form label {
-  font-size: 1.25em !important;
-  font-weight: bold;
-  margin: 0.5em 0 !important;
+    font-size: 1.25em !important;
+    font-weight: bold;
+    margin: 0.5em 0 !important;
 }
 
-#login button, #register button {
-  background-color: #3c9f2f !important;
-  transition: all 0.2s ease-in-out;
-  border: none !important;
-  font-size: 1.2em !important;
-  font-weight: bold !important;
-  text-transform: uppercase !important;
+#login button,
+#register button {
+    background-color: #3c9f2f !important;
+    transition: all 0.2s ease-in-out;
+    border: none !important;
+    font-size: 1.2em !important;
+    font-weight: bold !important;
+    text-transform: uppercase !important;
 }
 
 #login button:hover {
-  background-color: rgb(32, 129, 190) !important;
+    background-color: rgb(32, 129, 190) !important;
 }
 
 /*REGISTER*/
 .registrarse {
-  background-color: #3c9f2f !important;
-  transition: all 0.2s ease-in-out;
-  border: none !important;
-  font-size: 1.2em !important;
-  font-weight: bold !important;
-  text-transform: uppercase !important;
-  transition: all 0.3s ease-in-out;
+    background-color: #3c9f2f !important;
+    transition: all 0.2s ease-in-out;
+    border: none !important;
+    font-size: 1.2em !important;
+    font-weight: bold !important;
+    text-transform: uppercase !important;
+    transition: all 0.3s ease-in-out;
 }
 
 .registrarse:hover {
-  background-color: rgb(32, 129, 190) !important;
+    background-color: rgb(32, 129, 190) !important;
 }
-
-
-
 
 @media screen and (max-width: 991px) {
-  /*404*/
-  #error-404 img {
-    width: 50% !important;
-  }
+    /*404*/
+    #error-404 img {
+        width: 50% !important;
+    }
+
+    .tarjeta-derecha {
+        margin-top: 0em !important;
+    }
+
+    .tarjeta-home {
+        margin-top: 5em !important;
+    }
+
+    .tarjeta-home:first-of-type {
+        margin-top: 2em !important;
+    }
+
+    .comprar-edicion-btn {
+        margin: auto !important
+    }
+
+    .filtrar-categoria {
+        width: 50% !important;
+    }
 }
 
-/*HOME banner MOBILE breakpoint 720*/
-@media screen and (max-width: 720px) {
-  /*HOME BANNER*/
-  #banner {
-    background-image: url('/storage/static-images/minecraft-banner-mobile.webp');
-  }
+/*HOME banner MOBILE breakpoint 767 -> 768 ya es tablet*/
+@media screen and (max-width: 767px) {
+    h2 {
+        font-size: 2em !important;
+    }
+    
+    h3 {
+        font-size: 1.65em !important;
+    }
+    
+    p {
+        font-size: 1.25em !important;
+    }
 
-  
+    /*FOOTER*/
+    #logo-footer {
+        width: 200px !important;
+        height: 40px !important;
+    }
+
+    #footer ul li {
+        font-size: 1.25em !important;
+    }
+
+    #footer ul li i {
+        font-size: 1.5em !important;
+    }
+
+    .volar {
+        font-size: 1.35em !important;
+    }
+    
+    /*HOME BANNER*/
+    #banner {
+        background-image: url("/storage/static-images/minecraft-banner-mobile.webp");
+    }
+
+    .btn-comprar-home {
+        width: 70% !important;
+        margin-bottom: 2em !important;
+    }
+
+    .comprar-edicion-btn {
+        width: 50% !important;
+    }
+
+    .filtrar-categoria {
+        width: 75% !important;
+    }
 }
+
+    @media screen and (max-width: 575px) {
+        .links-nav-paginacion {
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+        }
+
+        .btn-comprar-home {
+            width: 80% !important;
+        }
+
+        .comprar-edicion-btn {
+            width: 60% !important;
+        }
+
+        .contenedor-post, #contacto, #register, #login, #home section {
+            padding: 2em !important;
+        }
+    }
+

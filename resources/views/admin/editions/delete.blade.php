@@ -7,12 +7,12 @@
         
         <div class="row justify-content-center align-items-center">
 
-            <div class="text-center mb-5 mt-5 col-lg-4 col-md-12 mb-3">
+            <div class="text-center mb-5 mt-5 col-lg-6 col-md-12 mb-3">
               <h3 class="fw-bold">Título:</h3>
               <p>{{ $edition->title }}</p>
             </div>
 
-            <div class="text-center mb-5 mt-5 col-lg-4 col-md-12 mb-3">
+            <div class="text-center mb-5 mt-5 col-lg-6 col-md-12 mb-3">
               <h3 class="fw-bold">Subtítulo:</h3>
               <p>{{ $edition->subtitle }}</p>
             </div>
@@ -24,7 +24,7 @@
 
             <div class="text-center mb-5 mt-5 col-lg-4 col-md-12 mb-3">
               <h3 class="fw-bold">Precio:</h3>
-              <p>{{ $edition->price }}</p>
+              <p>${{ $edition->price }}</p>
             </div>
 
           

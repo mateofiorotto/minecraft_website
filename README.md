@@ -1,108 +1,116 @@
 ## ENG
 
-This site is a university project. The assignment is based on a product/service offered for sale. In this case, the video game "Minecraft" with 3 editions.
+This site is a project for university. The assignment is based on a product/service offered for sale. In this case, the video game "Minecraft" with 3 editions.
 
-The instructions specify:
+The guideline states:
 
 ### Frontend
 
 - Offer users a service or product, such as:
-  a hosting service, audit service, development service, product with subscription (e.g.: antivirus, an online app like Figma), a video game, etc. A shopping cart is not required.
-- Include a blog/news/updates section that discusses the service/product or related topics.
-- Include a home page that presents the product.
+  a hosting service, auditing service, development service,
+  a subscription product (e.g., an antivirus, an online app like
+  Figma), a video game, etc. A shopping cart is **not** required.
+
+My website is about the video game Minecraft. The idea is that users can purchase any of the published editions.
+
+- Include a blog/news/updates section that discusses the
+  product/service or related topics.
+
+A "news" section is included, which also features categories.
+
+- Include a homepage that presents the product.
+
+The homepage introduces the video game in general and features a CTA button that leads the user to the editions.
 
 ### Admin/Backend
 
 - Require authentication to access.
-- Provide a CRUD to manage blog/news/updates entries.
 
-Both frontend and backend must offer semantic structure and styling.
+The CRUD system requires the user to be logged in and have an "admin" role; otherwise, they won't be able to access the admin area.
+Users can register, but only as regular users. Admin creation must be done manually via seeder or directly in the database.
+
+- Provide CRUD operations to manage blog/news/updates entries.
+
+Includes a CRUD for posts, categories, users, and editions. It handles images, relationships, and validations.
+
+- Both frontend and backend must use semantic structure and styling.
+
+Both have semantic HTML structure, using `section`, `nav`, `footer`, `header`, and properly ordered heading tags.
+It also includes custom styling with Bootstrap and CSS.
 
 ---
 
 ### Database
 
-- Must consist of at least 3 tables: one for users and two for blog, news or services.
+- Must include at least 3 tables: one for users and two others for blog, news, or services.
 
-In my case, the project includes 4 tables: users, categories (for posts), posts, and editions (the product).
+In this project, the database includes 4 tables: users, categories (1:N for posts), posts, and editions (the product).
 
-- The user table must include at least 3 fields: an ID, a username, and a password.
+- The user table must include at least 3 fields: ID, username, and password.
 
-In this project, the user table includes the required fields, plus a role field (as well as the default timestamps).
+In this project, the user table includes the required fields, plus `name` and `role` (along with Laravel's default timestamps).
 
-- At least one of the other tables must have 5 fields (excluding primary key and timestamps).
+- At least one of the other tables must contain 5 fields excluding PK and timestamps.
 
-The `editions` table includes 7 fields in addition to ID and timestamps: title, subtitle, content, image (string), bestseller, price, and softDeletes (which is the `deleted_at` column).
+The `editions` table contains 7 fields besides ID and timestamps: `title`, `subtitle`, `content`, `image` (string), `bestseller`, `price`, and `softDeletes` (`deleted_at`).
 
-The `posts` table also includes 7 fields: title, subtitle, content, image, active (true or false, controls whether the post is visible in the frontend), category_id (multiple posts can belong to one category), and softDeletes.
+The `posts` table also has 7 fields: `title`, `subtitle`, `content`, `image`, `active` (true/false — controls visibility), `category_id` (many posts can belong to one category), and `softDeletes`.
 
-- All table creation and initial data loading must be done using migrations and seeders.
+- Table creation and initial data population must be done with migrations and seeders.
 
-The application includes migrations and seeders to create and populate the database.  
-Run the command:  
-```php artisan migrate:fresh --seed```
+The app includes migrations and seeders to handle table creation and data seeding.  
+Run command: ````php artisan migrate:fresh --seed```
 
 ---
 
 ### PHP
 
-- Laravel 10 must be used, applying object-oriented programming principles and taking advantage of the framework's tools, following best practices.
+- The Laravel 10 framework must be used, applying object-oriented principles and leveraging its built-in features, following best practices.
 
-This project uses Laravel 11, which is the version taught in class and the most stable recent version (the assignment instructions may be outdated).
+This project uses **Laravel 11**, which was covered in class and is currently the latest stable version (the assignment guideline might be outdated).
 
-- All views must use the Blade template engine.
+- Views must be rendered using the Blade template engine.
 
-All views use Blade.
+All views are built with Blade and use its built-in tools.
 
-- All data inputs must be validated, and any errors must be reported if present.
+- All data input must be validated, and errors must be reported when present.
 
-The `validate` method and Laravel’s built-in rules (like `required`, `min`, etc.) are used.  
-Validations are also performed to check if a record is not found, redirecting to a 404 page.
+The project uses Laravel's `validate` method with rules like `required`, `min`, etc.  
+It also handles "resource not found" errors with redirects to a 404 page.  
+Errors are shown as part of user feedback (explained below).
 
-- Feedback messages must be provided to the user to facilitate understanding of what happened.
+- Feedback messages must be provided to help the user understand what happened.
 
-The `$errors` variable is used in views to display form errors when creating or editing content.  
-A 404 page is included.  
-Alerts will soon be added to the respective CRUD index pages for success messages (create/edit/delete).
+`$errors` is used in views to show field-specific validation messages.  
+A custom 404 page is displayed if a resource is not found.  
+SweetAlert2 is used for alerts in the CRUD and login areas.
 
 ---
 
 ### ADDITIONAL FEATURES
 
-- Pagination added
-- phpDoc comments
-- Categories table added
+- Pagination  
+- phpDoc  
+- Categories table  
+- User registration  
+- SweetAlert2 alerts  
+- SoftDeletes  
 
 ---
 
-### To-Do (this section will be removed later)
+### The following will also be considered during evaluation:
 
-- Authentication for accessing admin panel
-- CRUD success/failure alerts
-- Login pages
-- CRUD pages for all entities
-- Styling the website
-- Middleware (along with auth)
-- Check semantic structure
-- Document everything with phpDoc
-- Improve seeders content
-- Ensure softDeletes don’t break anything when related to other models
-
----
-
-### Evaluation criteria will also consider:
-
-- Complexity of the implemented tasks
-- Extra relational tables in the database
-- Correct implementation of OOP tools (encapsulation, inheritance, etc.)
-- Application of OOP best practices (e.g., Single Responsibility Principle)
-- Consistent and coherent naming (variables, classes, methods, etc.)
-- Correct use of HTML semantic tags
-- Proper documentation using phpDoc
-- Styling and visual design of the site
-- Correct use of components covered in class (Models, Controllers, Middlewares, etc.)
-- Code organization and cleanliness
-- Project folder structure and organization
+- Complexity of the task completed.  
+- Additional relationship tables in the database.  
+- Correct implementation of OOP principles (encapsulation, inheritance, etc.).  
+- Application of OOP best practices (e.g., Single Responsibility Principle).  
+- Consistency in naming conventions (variables, classes, methods, etc.).  
+- Proper use of semantic HTML tags.  
+- Appropriate documentation using phpDoc.  
+- Styling quality.  
+- Proper use of Laravel components (Models, Controllers, Middleware, etc.).  
+- Code cleanliness and organization.  
+- Project folder structure organization.  
 
 ---
 
@@ -125,25 +133,27 @@ Mi sitio web es acerca del videojuego Minecraft. La idea de la web es que se pue
 - Incluir una sección de blog/novedades/noticias donde se hable del
 servicio/producto o de temas relacionados.
 
-Se incluye una seccion "noticias" 
+Se incluye una seccion "noticias" que tambien tiene categorias.
 
 - Incluir una home que presente el producto.
 
-La home presenta al videojuego en general.
+La home presenta al videojuego en general y tiene un boton que hace de CTA para llevar al usuario hacia las ediciones.
 
 ### Admin/Backend
 - Requerir de una autenticación para acceder.
 
 El CRUD requiere que la persona que quiera ingresar este logueado y su rol sea "admin", de lo contrario no podra acceder al administrador.
+El usuario puede registrarse, pero solo como Usuario normal. La creación de usuarios administradores debe ser manual mediante seeder o desde la base de datos.
 
 - Proveer de un ABM para administrar las entradas del
 blog/novedades/noticias
 
-- Cuenta con un CRUD para posteos, categorias, usuarios y ediciones.
+Cuenta con un CRUD para posteos, categorias, usuarios y ediciones. El CRUD cuenta con manejo de imagenes, relaciones y validaciones.
 
 - Ambos deben ofrecer estructura semantica y estilizacion.
 
-Ambos cuentan con estructura semantica HTML y estilizacion personalizada con bootstrap y CSS.
+Ambos cuentan con estructura semantica HTML, utilizando sections, nav, footer, header y etiquetas headers con respeto de jerarquia.
+También tiene estilización personalizada con bootstrap y CSS.
 
 ---
 
@@ -151,11 +161,11 @@ Ambos cuentan con estructura semantica HTML y estilizacion personalizada con boo
 
 - Debe constar de al menos, 3 tablas, una de usuarios y otras dos para el blog, novedades o servicios
 
-En mi caso, el proyecto cuenta con 4 tablas: usuarios, categorias (para los posteos), posteos y ediciones (que será el producto).
+En mi caso, el proyecto cuenta con 4 tablas: usuarios, categorias (1:N para los posteos), posteos y ediciones (que será el producto).
 
 - La tabla de usuario debe contar con al menos 3 campos: uno para ID, otro username y otro password.
 
-En este proyecto el usuario cuenta con las tablas requeridas y se agrega la tabla rol (ademas de los timestamps que vienen por defecto).
+En este proyecto el usuario cuenta con los campos requeridos y se agregan los campos nombre y rol (ademas de los timestamps que vienen por defecto).
 
 - Al menos una de las otras tablas debe constituirse de 5 campos sin contar PK y los campos de fechas
 
@@ -177,39 +187,27 @@ En este proyecto se utiliza Laravel 11 que es lo visto en clase y es la versión
 
 - Las vistas deberán utilizar el motor de template Blade para su renderizado.
 
-Todas las vistas son Blade
+Todas las vistas son Blade y utilizan las herramientas proporcionada por el motor de plantillas.
 
 - Todos los ingresos de datos deberán estar validados, e informar los errores ocurridos, en caso de haberlos.
 
 Se utiliza el metodo validate y reglas que proporciona el framework como required, min, etc.
 También se hacen validaciones por si algun registro no es encontrado, redireccionando a la página de 404.
+Se muestran errores como parte de feedback (explicado abajo).
 
 - Debe proveerse de mensajes de feedback al usuario sobre lo ocurrido para facilitar la comprensión de la web.
 
-Se utiliza $errors en las vistas para informar de errores al crear o editar incorrectamente. También hay una página de 404.
-Se agregan alertas en el crud y el login con sweetalert2.
+Se utiliza $errors en las vistas para informar de errores debajo de cada campo. También hay una página de 404 si un recurso no es encontrado. Se agregan alertas en el CRUD y el Login con sweetalert2.
 
 ---
 
 ### ADICIONALES:
 - Se agrego paginación
 - phpDoc
-- Tabla categorias
+- Tabla Categorias
 - Registro
 - Alertas con sweetalert2
-
---- 
-
-### Falta por hacer (esta sección sera eliminada luego):
-HOY: 
-- cambiar color btn hamburguesa
-
-MAÑANA
-- Info home
-- Estilizacion de la web
-- Chequear semantica y validar html en lo posible, no cuenta el swal2
-- Hacer bien el contenido de los seeders
-- Cargar imgs
+- SoftDeletes
 
 Se evaluará y tendrá impacto en la nota también:
 - Complejidad de la tarea realizada.

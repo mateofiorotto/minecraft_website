@@ -6,7 +6,7 @@
         <p class="text-center">La pagina o recurso que estas buscando no existe</p>
         <!-- Si la ruta es /admin entonces volver al dashboard, sino al front -->
         <div class="mt-5 text-center">
-            <a class="mt-5" href="{{ Request::is('admin*') ? route('dashboard') : route('home') }}">Volver</a>
+            <a class="mt-5 volver-404" href="{{ Request::is('admin*') ? route('dashboard') : route('home') }}">Volver</a>
         </div>
     </section>
 </x-layout>

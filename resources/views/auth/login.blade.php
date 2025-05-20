@@ -41,9 +41,9 @@
             @method('POST')
 
             <div class="row justify-content-center align-items-center">
-                <div class="col-7 mb-5">
+                <div class="col-lg-7 col-md-10 mb-5">
                     <label for="username" class="form-label">Usuario</label>
-                    <input type="username" name="username" id="username" class="form-control"
+                    <input type="text" name="username" id="username" class="form-control"
                         value="{{ old('username') }}">
 
                     @if ($errors->has('username'))
@@ -54,7 +54,7 @@
 
                 </div>
 
-                <div class="col-7 mb-5">
+                <div class="col-lg-7 col-md-10 mb-5">
                     <label for="password" class="form-label">Contraseña</label>
                     <input type="password" name="password" id="password" class="form-control">
 

@@ -7,3 +7,111 @@ COMISION: DWN4AV
 APELLIDO Y NOMBRE: Fiorotto Mateo
 DOCENTE: Villafañe Victor Emanuel
 CARACTER DE ENTREGA: 1er parcial
+
+----------------------------------
+Punto por punto pauta:
+Este sitio es un proyecto para la facultad. La consigna se basa en un producto/servicio que se ofrezca para la venta. En este caso, el videojuego "Minecraft" con 3 ediciones.
+
+La pauta dice:
+
+### Frontend
+
+- Ofrecer a los usuarios algún servicio o producto, como por ejemplo:
+un servicio de hosting, servicio de auditoría, servicio de desarrollo,
+producto con suscripción (ej: un antivirus, una app online como
+Figma), un videojuego, etc. No es necesaria la implementación de
+un carrito de compras.
+
+Mi sitio web es acerca del videojuego Minecraft. La idea de la web es que se pueda vender cualquiera de las ediciones publicadas.
+
+- Incluir una sección de blog/novedades/noticias donde se hable del
+servicio/producto o de temas relacionados.
+
+Se incluye una seccion "noticias" que tambien tiene categorias.
+
+- Incluir una home que presente el producto.
+
+La home presenta al videojuego en general y tiene un boton que hace de CTA para llevar al usuario hacia las ediciones.
+
+### Admin/Backend
+- Requerir de una autenticación para acceder.
+
+El CRUD requiere que la persona que quiera ingresar este logueado y su rol sea "admin", de lo contrario no podra acceder al administrador.
+El usuario puede registrarse, pero solo como Usuario normal. La creación de usuarios administradores debe ser manual mediante seeder o desde la base de datos.
+
+- Proveer de un ABM para administrar las entradas del
+blog/novedades/noticias
+
+Cuenta con un CRUD para posteos, categorias, usuarios y ediciones. El CRUD cuenta con manejo de imagenes, relaciones y validaciones.
+
+- Ambos deben ofrecer estructura semantica y estilizacion.
+
+Ambos cuentan con estructura semantica HTML, utilizando sections, nav, footer, header y etiquetas headers con respeto de jerarquia.
+También tiene estilización personalizada con bootstrap y CSS.
+
+---
+
+### Base de datos
+
+- Debe constar de al menos, 3 tablas, una de usuarios y otras dos para el blog, novedades o servicios
+
+En mi caso, el proyecto cuenta con 4 tablas: usuarios, categorias (1:N para los posteos), posteos y ediciones (que será el producto).
+
+- La tabla de usuario debe contar con al menos 3 campos: uno para ID, otro username y otro password.
+
+En este proyecto el usuario cuenta con los campos requeridos y se agregan los campos nombre y rol (ademas de los timestamps que vienen por defecto).
+
+- Al menos una de las otras tablas debe constituirse de 5 campos sin contar PK y los campos de fechas
+
+La tabla de ediciones cuenta con 7 campos ademas del ID y timestamps; titulo, subtitulo, contenido, imagen (string), bestseller, precio, softDeletes (que seria deleted_at).
+
+La tabla de posts cuenta con 7 campos también: titulo, subtitulo, contenido, imagen, activo (true or false, afecta si esta visible o no el post en el front), id de categoria (varios post pueden pertenecer a 1 categoria), softDeletes.
+
+- Toda la creación de tablas, y la carga inicial de datos, deberá estar realizada con migrations y seeders.
+
+La aplicación cuenta con migraciones y seeders que se encargan de realizar la creación y la carga de datos en la base de datos.
+Ejecutar el comando: ````php artisan migrate:fresh --seed```
+
+---
+
+### PHP
+- Deberá usarse el framework Laravel 10 aplicando los principios de la programación orientada a objetos, y aprovechando los mecanismos de trabajo ofrecidos por el mismo, siguiendo sus prácticas recomendadas.
+
+En este proyecto se utiliza Laravel 11 que es lo visto en clase y es la versión nueva más estable (es posible que la pauta de parcial este desactualizada).
+
+- Las vistas deberán utilizar el motor de template Blade para su renderizado.
+
+Todas las vistas son Blade y utilizan las herramientas proporcionada por el motor de plantillas.
+
+- Todos los ingresos de datos deberán estar validados, e informar los errores ocurridos, en caso de haberlos.
+
+Se utiliza el metodo validate y reglas que proporciona el framework como required, min, etc.
+También se hacen validaciones por si algun registro no es encontrado, redireccionando a la página de 404.
+Se muestran errores como parte de feedback (explicado abajo).
+
+- Debe proveerse de mensajes de feedback al usuario sobre lo ocurrido para facilitar la comprensión de la web.
+
+Se utiliza $errors en las vistas para informar de errores debajo de cada campo. También hay una página de 404 si un recurso no es encontrado. Se agregan alertas en el CRUD y el Login con sweetalert2.
+
+---
+
+### ADICIONALES:
+- Se agrego paginación
+- phpDoc
+- Tabla Categorias
+- Registro
+- Alertas con sweetalert2
+- SoftDeletes
+
+Se evaluará y tendrá impacto en la nota también:
+- Complejidad de la tarea realizada.
+- Tablas de relaciones extras en la base de datos.
+- Correcta implementación de las herramientas de la Orientación a Objetos (encapsulamiento, herencia, etc).
+- Implementación de buenas prácticas para la Programación Orientada a Objetos (ej: Principio de Responsabilidad Única).
+- Coherencia en los nombres de variables, clases, métodos, etc.
+- Uso correcto de las etiquetas semánticas de HTML.
+- Documentación apropiada usando phpDoc.
+- Estilización del sitio.
+- Buena aplicación de los distintos tipos de componentes vistos en clase (Models, Controllers, Middlewares, etc).
+- Prolijidad en el código.
+- Prolijidad en la organización de la carpeta del proyecto.

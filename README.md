@@ -1,3 +1,30 @@
+# Minecraft Website
+
+## Used Technologies / Tecnologias Utilizadas
+
+<p class="technologies">
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=laravel,php,html,css,bootstrap,javascript" />
+  </a>
+</p>
+
+- JavaScript
+- Laravel
+  - Eloquent ORM
+- PHP
+- HTML5
+- CCS3
+- BOOTSTRAP 5
+- XAMPP (Development Environment, Apache, phpmyadmin)
+
+---
+
+### [Go to documentation in English](#ENG)
+
+<br>
+
+### [Ir a documentación en Español](#ESP)
+
 ## ENG
 
 This site is a project for university. The assignment is based on a product/service offered for sale. In this case, the video game "Minecraft" with 3 editions.
@@ -59,7 +86,7 @@ The `posts` table also has 7 fields: `title`, `subtitle`, `content`, `image`, `a
 - Table creation and initial data population must be done with migrations and seeders.
 
 The app includes migrations and seeders to handle table creation and data seeding.  
-Run command: ````php artisan migrate:fresh --seed```
+Run command: ```php artisan migrate:fresh --seed```
 
 ---
 
@@ -111,6 +138,39 @@ SweetAlert2 is used for alerts in the CRUD and login areas.
 - Proper use of Laravel components (Models, Controllers, Middleware, etc.).  
 - Code cleanliness and organization.  
 - Project folder structure organization.  
+
+### How to use
+
+1. Clone the repository
+
+ ```
+  git clone https://github.com/mateofiorotto/minecraft_website
+  cd minecraft_website
+  ```
+
+2. Open XAMPP
+
+Run the Apache and MySQL Services.
+
+3. Check .env.example
+
+Create and set your environment variables correctly (.env)
+
+4. Enter to the project folder (with the CLI) and run:
+
+```php artisan migrate:fresh --seed```
+
+If the CLI ask you to create a database, write yes
+
+5. Start local server
+
+Run:
+
+```php artisan serve```
+
+And enter to the local server (for default is the URL 127.0.0.1:8000)
+
+**NOTE:** Feel free to adjust any settings to fit your local environment.
 
 ---
 
@@ -176,7 +236,7 @@ La tabla de posts cuenta con 7 campos también: titulo, subtitulo, contenido, im
 - Toda la creación de tablas, y la carga inicial de datos, deberá estar realizada con migrations y seeders.
 
 La aplicación cuenta con migraciones y seeders que se encargan de realizar la creación y la carga de datos en la base de datos.
-Ejecutar el comando: ````php artisan migrate:fresh --seed```
+Ejecutar el comando: ```php artisan migrate:fresh --seed```
 
 ---
 
@@ -221,3 +281,36 @@ Se evaluará y tendrá impacto en la nota también:
 - Buena aplicación de los distintos tipos de componentes vistos en clase (Models, Controllers, Middlewares, etc).
 - Prolijidad en el código.
 - Prolijidad en la organización de la carpeta del proyecto.
+
+### How to use
+
+1. Clona el repositorio
+
+ ```
+  git clone https://github.com/mateofiorotto/minecraft_website
+  cd minecraft_website
+  ```
+
+2. Abri XAMPP
+
+Inicia los servicios Apache y MySQL
+
+3. Chequea .env.example
+
+Crea y pone tus variables de entorno correcamente (.env)
+
+4. Entra a la carpeta del proyecto (con la CLI) y ejecuta:
+
+```php artisan migrate:fresh --seed```
+
+Si la CLI the pregunta para crear una base de datos, escribi yes
+
+5. Iniciar servidor local
+
+Ejecuta:
+
+```php artisan serve```
+
+Y entra al servidor local (por defecto la URL es 127.0.0.1:8000)
+
+**NOTA:** Edita librementa cualquier configuración para ajustarla a tu entorno local.

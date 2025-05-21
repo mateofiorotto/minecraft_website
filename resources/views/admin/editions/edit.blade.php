@@ -27,7 +27,7 @@
 
             <div class="row justify-content-center align-items-center">
                 <div class="col-lg-6 col-md-12 mb-3">
-                    <label for="title" class="form-label">Título</label>
+                    <label for="title" class="form-label">Título<span class="obligatorio">*</span></label>
                     <input type="text" name="title" id="title" class="form-control"
                         value="{{ old('title', $edition->title) }}">
 
@@ -39,7 +39,7 @@
                 </div>
 
                 <div class="col-lg-6 col-md-12 mb-3">
-                    <label for="subtitle" class="form-label">Subtítulo</label>
+                    <label for="subtitle" class="form-label">Subtítulo<span class="obligatorio">*</span></label>
                     <input type="text" name="subtitle" id="subtitle" class="form-control"
                         value="{{ old('subtitle', $edition->subtitle) }}">
 
@@ -51,7 +51,7 @@
                 </div>
 
                 <div class="col-12 mb-3">
-                    <label for="content" class="form-label">Contenido</label>
+                    <label for="content" class="form-label">Contenido<span class="obligatorio">*</span></label>
                     <textarea name="content" id="content" rows="5" class="form-control">{{ old('content', $edition->content) }}</textarea>
 
                     @if ($errors->has('content'))
@@ -62,7 +62,7 @@
                 </div>
 
                 <div class="col-lg-6 col-md-12 mb-3">
-                    <label for="image" class="form-label">Imagen</label>
+                    <label for="image" class="form-label">Imagen<span class="obligatorio">*</span></label>
                     <input type="file" name="image" id="image" class="form-control">
 
                     @if ($errors->has('image'))
@@ -73,7 +73,7 @@
                 </div>
 
                 <div class="col-lg-6 col-md-12 mb-3">
-                    <label for="bestseller" class="form-label">Bestseller</label>
+                    <label for="bestseller" class="form-label">Bestseller<span class="obligatorio">*</span></label>
                     <select name="bestseller" id="bestseller" class="form-select">
                         <option value="1" {{ old('bestseller', $edition->bestseller) == 1 ? 'selected' : '' }}>Si
                         </option>
@@ -96,7 +96,7 @@
                 </div>
 
                 <div class="col-lg-6 col-md-12 mb-5">
-                     <label for="price" class="form-label">Precio</label>
+                     <label for="price" class="form-label">Precio<span class="obligatorio">*</span></label>
                     <input type="text" name="price" id="price" class="form-control"
                         value="{{ old('price', $edition->price) }}">
 

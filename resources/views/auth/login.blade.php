@@ -42,7 +42,7 @@
 
             <div class="row justify-content-center align-items-center">
                 <div class="col-lg-7 col-md-10 mb-5">
-                    <label for="username" class="form-label">Usuario</label>
+                    <label for="username" class="form-label">Usuario<span class="obligatorio">*</span></label>
                     <input type="text" name="username" id="username" class="form-control"
                         value="{{ old('username') }}">
 
@@ -55,7 +55,7 @@
                 </div>
 
                 <div class="col-lg-7 col-md-10 mb-5">
-                    <label for="password" class="form-label">Contraseña</label>
+                    <label for="password" class="form-label">Contraseña<span class="obligatorio">*</span></label>
                     <input type="password" name="password" id="password" class="form-control">
 
                     @if ($errors->has('password'))

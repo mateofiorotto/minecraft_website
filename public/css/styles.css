@@ -62,6 +62,13 @@ img {
     align-items: center !important;    
 }
 
+.obligatorio {
+    color: rgb(174, 114, 3) !important;
+    padding-left: 0.5em !important;
+    font-size: 1.2em !important;
+    vertical-align: middle;
+}
+
 /*404*/
 #error-404 img {
     width: 25% !important;
@@ -83,6 +90,7 @@ img {
 /* HEADER*/
 #header {
     background-color: black !important;
+    transition: all 0.3s ease-in-out;
 }
 
 header nav {
@@ -141,6 +149,14 @@ header nav a,
     color: #3c9f2f !important;
 }
 
+#header .registrarse a:hover {
+    color: white !important;
+}
+
+#header ul li a:hover {
+    color: #3c9f2f !important;
+}
+
 /*footer*/
 #logo-footer {
     background-image: url("/storage/static-images/logo.webp");
@@ -158,11 +174,10 @@ footer {
 #footer ul li {
     font-size: 1.35em !important;
     margin-bottom: 0.5em !important;
-
 }
 
 #footer ul li a {
-    text-decoration: none !important;
+        text-decoration: none !important;
         color: white !important;
         transition: all 0.3s ease-in-out;
 }
@@ -215,15 +230,15 @@ iframe {
     background-color: #3c9f2f !important;
     transition: all 0.2s ease-in-out;
     border: none !important;
-    font-size: 1.35em !important;
+    font-size: 2em !important;
     font-weight: bold !important;
     text-transform: uppercase !important;
     transition: all 0.3s ease-in-out;
-    padding: 2em !important;
+    padding: 1.5em !important;
     text-decoration: none !important;
     color: white;
     display: block;
-    width: 50%;
+    width: 40%;
     margin: auto !important;
     transition: all 0.3s ease-in-out;
 }

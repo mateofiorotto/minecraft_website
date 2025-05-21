@@ -22,11 +22,18 @@ p {
   font-size: 1.25em !important;
 }
 
+.obligatorio {
+    color: rgb(174, 114, 3) !important;
+    padding-left: 0.5em !important;
+    font-size: 1.2em !important;
+    vertical-align: middle;
+}
 
 /* HEADER*/
 
 header {
   background-color: black;
+  transition: all 0.3s ease-in-out;
 }
 
 header nav {
@@ -72,6 +79,10 @@ header a {
 .navbar-toggler:active,
 .navbar-toggler-icon:focus {
     outline: 2px solid #3c9f2f !important;
+}
+
+#header ul li a:hover {
+    color: #3c9f2f !important;
 }
 
 /*crud*/

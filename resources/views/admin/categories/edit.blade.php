@@ -27,7 +27,7 @@
 
             <div class="row justify-content-center align-items-center">
                 <div class="col-lg-6 col-md-12 mb-5">
-                    <label for="name" class="form-label">Nombre</label>
+                    <label for="name" class="form-label">Nombre<span class="obligatorio">*</span></label>
                     <input type="text" name="name" id="name" class="form-control"
                         value="{{ old('name', $category->name) }}">
 

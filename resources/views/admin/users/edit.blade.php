@@ -38,7 +38,7 @@
 
             <div class="row justify-content-center align-items-center">
                 <div class="col-lg-6 col-md-12 mb-3">
-                    <label for="name" class="form-label">Nombre</label>
+                    <label for="name" class="form-label">Nombre<span class="obligatorio">*</span></label>
                     <input type="text" name="name" id="name" class="form-control"
                         value="{{ old('name', $user->name) }}">
 
@@ -50,7 +50,7 @@
                 </div>
 
                 <div class="col-lg-6 col-md-12 mb-3">
-                    <label for="role" class="form-label">Rol</label>
+                    <label for="role" class="form-label">Rol<span class="obligatorio">*</span></label>
                     <select name="role" id="role" class="form-select">
                         <option value="user" {{ old('role') == '0' ? 'selected' : '' }}>Usuario</option>
                         <option value="admin" {{ old('role') == '1' ? 'selected' : '' }}>Admin</option>
@@ -64,7 +64,7 @@
                 </div>
 
                 <div class="col-lg-6 col-md-12 mb-5">
-                    <label for="password" class="form-label">Contraseña</label>
+                    <label for="password" class="form-label">Contraseña<span class="obligatorio">*</span></label>
                     <input type="password" name="password" id="password" class="form-control"
                         value="{{ old('password', $user->password) }}">
 
@@ -76,7 +76,7 @@
                 </div>
 
                 <div class="col-lg-6 col-md-12 mb-5">
-                    <label for="password_confirmation" class="form-label">Confirmar Contraseña</label>
+                    <label for="password_confirmation" class="form-label">Confirmar Contraseña<span class="obligatorio">*</span></label>
                     <input type="password" name="password_confirmation" id="password_confirmation" class="form-control"
                         value="{{ old('password_confirmation', $user->password) }}">
                 </div>

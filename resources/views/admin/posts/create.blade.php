@@ -27,7 +27,7 @@
 
             <div class="row justify-content-center align-items-center">
                 <div class="col-lg-6 col-md-12 mb-3">
-                    <label for="title" class="form-label">Título</label>
+                    <label for="title" class="form-label">Título<span class="obligatorio">*</span></label>
                     <input value="{{ $errors->has('title') ? '' : old('title')  }}" type="text" name="title" id="title" class="form-control">
 
                     @if($errors->has('title'))
@@ -38,7 +38,7 @@
                 </div>
 
                 <div class="col-lg-6 col-md-12 mb-3">
-                    <label for="subtitle" class="form-label">Subtítulo</label>
+                    <label for="subtitle" class="form-label">Subtítulo<span class="obligatorio">*</span></label>
                     <input value="{{ $errors->has('subtitle') ? '' : old('subtitle')  }}" type="text" name="subtitle" id="subtitle" class="form-control">
 
                     @if($errors->has('subtitle'))
@@ -49,7 +49,7 @@
                 </div>
 
                 <div class="col-12 mb-3">
-                    <label for="content" class="form-label">Contenido</label>
+                    <label for="content" class="form-label">Contenido<span class="obligatorio">*</span></label>
                     <textarea name="content" id="content" rows="5" class="form-control">{{ $errors->has('content') ? '' : old('content') }}</textarea>
 
                     @if($errors->has('content'))
@@ -60,7 +60,7 @@
                 </div>
 
                 <div class="col-lg-6 col-md-12 mb-3">
-                    <label for="image" class="form-label">Imagen</label>
+                    <label for="image" class="form-label">Imagen<span class="obligatorio">*</span></label>
                     <input type="file" name="image" id="image" class="form-control">
 
                     @if($errors->has('image'))
@@ -71,7 +71,7 @@
                 </div>
 
                 <div class="col-lg-6 col-md-12 mb-3">
-                    <label for="active" class="form-label">Estado</label>
+                    <label for="active" class="form-label">Estado<span class="obligatorio">*</span></label>
                     <select name="active" id="active" class="form-select">
                         <option value="1" {{ old('active') == '1' ? 'selected' : '' }}>Activo</option>
                         <option value="0" {{ old('active') == '0' ? 'selected' : '' }}>Desactivado</option>
@@ -85,7 +85,7 @@
                 </div>
 
                 <div class="col-lg-6 col-md-12 mb-5">
-                    <label for="category_id" class="form-label">Categoría</label>
+                    <label for="category_id" class="form-label">Categoría<span class="obligatorio">*</span></label>
                     <select name="category_id" id="category_id" class="form-select">
                         @foreach ($categories as $category)
                             <option value="{{ $category->id }}">{{ $category->name }}</option>

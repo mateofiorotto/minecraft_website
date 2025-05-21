@@ -43,7 +43,7 @@
             <div class="row justify-content-center align-items-center">
 
                 <div class="col-lg-6 col-md-10 mb-5">
-                    <label for="name" class="form-label">Nombre</label>
+                    <label for="name" class="form-label">Nombre<span class="obligatorio">*</span></label>
                     <input type="text" name="name" id="name" class="form-control"
                         value="{{ old('name') }}">
 
@@ -55,7 +55,7 @@
 
                 </div>
                 <div class="col-lg-6 col-md-10 mb-5">
-                    <label for="username" class="form-label">Usuario</label>
+                    <label for="username" class="form-label">Usuario<span class="obligatorio">*</span></label>
                     <input type="text" name="username" id="username" class="form-control"
                         value="{{ old('username') }}">
 
@@ -68,7 +68,7 @@
                 </div>
 
                 <div class="col-lg-6 col-md-10 mb-5">
-                    <label for="password" class="form-label">Contraseña</label>
+                    <label for="password" class="form-label">Contraseña<span class="obligatorio">*</span></label>
                     <input type="password" name="password" id="password" class="form-control">
 
                     @if ($errors->has('password'))
@@ -79,13 +79,13 @@
                 </div>
 
                 <div class="col-lg-6 col-md-10 mb-5">
-                    <label for="password_confirmation" class="form-label">Confirmar Contraseña</label>
+                    <label for="password_confirmation" class="form-label">Confirmar Contraseña<span class="obligatorio">*</span></label>
                     <input type="password" name="password_confirmation" id="password_confirmation" class="form-control"
                         value="{{ old('password_confirmation') }}">
                 </div>
 
                 <div class="col-lg-6 col-md-10 mb-5">
-                    <label for="email" class="form-label">Email</label>
+                    <label for="email" class="form-label">Email<span class="obligatorio">*</span></label>
                     <input type="email" name="email" id="email" class="form-control"
                         value="{{ old('email') }}">
 

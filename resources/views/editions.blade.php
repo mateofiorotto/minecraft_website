@@ -14,7 +14,7 @@
                 <p class="text-center">No hay ediciones disponibles por el momento.</p>
             @else
                 @foreach ($editions as $edition)
-                    <div class="col-md-12 col-lg-4 m-4 m-lg-0 animar-tarjeta {{$edition->bestseller == 1 ? 'bestseller' : ''}}">
+                    <div class="col-md-12 col-lg-4 mb-4 animar-tarjeta {{$edition->bestseller == 1 ? 'bestseller' : ''}}">
                         <a class="edicion-tarjeta" href="{{ route('edition', $edition->id) }}">
                             <img class="img-fluid" src="{{ asset('storage/' . $edition->image) }}"
                                 alt="{{ $edition->title }}">

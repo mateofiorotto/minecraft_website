@@ -21,7 +21,7 @@ class AdminPostsController extends Controller
      */
     public function index(){
 
-        $posts = Post::paginate(6);
+        $posts = Post::with('category')->paginate(6);
 
         return view('admin.posts.index', ['posts' => $posts]);
     }
@@ -47,7 +47,8 @@ class AdminPostsController extends Controller
      */
     public function edit($id){
         $categories = Category::all();
-        $post = Post::find($id);
+       
+        $post = Post::with('category')->find($id);
 
         if (!$post){
             abort(404);
@@ -63,7 +64,7 @@ class AdminPostsController extends Controller
      * @return Vista admin.posts.delete
      */
     public function delete($id){
-        $post = Post::find($id);
+        $post = Post::with('category')->find($id);
 
         if (!$post){
             abort(404);

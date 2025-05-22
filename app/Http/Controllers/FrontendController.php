@@ -30,9 +30,7 @@ class FrontendController extends Controller
     public function posts(Request $request)
     {
 
-        $query = Post::query();
-
-        $query->where('active', true);
+        $query = Post::with('category')->where('active', true);
 
         if ($request->filled('category') && $request->category !== 'all') {
             $query->where('category_id', $request->category);
@@ -53,7 +51,7 @@ class FrontendController extends Controller
     public function postById($id)
     {
 
-        $post = Post::find($id);
+        $post = Post::with('category')->find($id);
 
         //Si el post no existe o no esta activo ir a 404
         if (!$post || $post->active == false) {

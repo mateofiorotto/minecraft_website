@@ -1,3 +1,9 @@
+<?php 
+
+$tagsIds = $post->tags->pluck('id')->all();
+
+?>
+
 <!--FORM PARA EDITAR POSTS-->
 <x-layout-admin>
     <x-slot:title>Editar Post: {{ $post->title }}</x-slot:title>
@@ -97,6 +103,33 @@
                 </div>
 
                 <div class="col-lg-6 col-md-12 mb-5">
+                    <label class="form-label fw-bold">Etiquetas</label>
+                    <div class="row">
+                        @foreach ($tags as $tag)
+                            <div class="col-md-6 mb-2">
+                                <div class="form-check d-flex align-items-center" style="word-break: break-word;">
+                                    <input class="form-check-input me-2" type="checkbox" name="tags[]"
+                                        value="{{ $tag->id }}" id="tag{{ $tag->id }}"
+                                        {{ in_array($tag->id, old('tags', $tagsIds)) ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="tag{{ $tag->id }}">
+                                        {{ $tag->name }}
+                                    </label>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+
+                    @if ($errors->has('tags'))
+                        <div class="mt-2 text-danger">
+                            <p>{{ $errors->first('tags') }}</p>
+                        </div>
+                    @endif
+
+                    <p class="mt-3">¿No está la etiqueta que buscás? <a href="{{ route('tags.create') }}">Creá
+                            una</a></p>
+                </div>
+
+                <div class="col-lg-6 col-md-12 mb-5">
                     <label for="category_id" class="form-label">Categoría<span class="obligatorio">*</span></label>
                     <select name="category_id" id="category_id" class="form-select">
                         @foreach ($categories as $category)
@@ -108,7 +141,7 @@
                     <p class="mt-3">¿No está la categoría que buscas? <a href="{{ route('categories.create') }}">Crea
                             una</a></p>
 
-                    @if ($errors->has('categor_id'))
+                    @if ($errors->has('category_id'))
                         <div class="mt-2 text-danger">
                             <p>{{ $errors->first('category_id') }}</p>
                         </div>

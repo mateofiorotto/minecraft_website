@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Category;
+use App\Models\Tag;
 use Illuminate\Support\Facades\Storage;
 
 class AdminPostsController extends Controller
@@ -19,24 +20,27 @@ class AdminPostsController extends Controller
      * 
      * @return Vista admin.posts.index y array asociativo de posts
      */
-    public function index(){
+    public function index()
+    {
 
-        $posts = Post::with('category')->paginate(6);
+        $posts = Post::with(['category', 'tags'])->paginate(6);
 
         return view('admin.posts.index', ['posts' => $posts]);
     }
 
     //No usare show
-    
+
     /**
      * Metodo para retornar la vista del formulario de creacion de un nuevo post
      * 
      * @return Vista admin.posts.create y array asociativo de categorias
      */
-    public function create(){
+    public function create()
+    {
         $categories = Category::all();
+        $tags = Tag::orderBy('name')->get();
 
-        return view('admin.posts.create', ['categories' => $categories]);
+        return view('admin.posts.create', ['categories' => $categories, 'tags' => $tags]);
     }
 
     /**
@@ -45,16 +49,18 @@ class AdminPostsController extends Controller
      * @param id ID del post
      * @return Vista admin.posts.edit
      */
-    public function edit($id){
+    public function edit($id)
+    {
         $categories = Category::all();
-       
-        $post = Post::with('category')->find($id);
+        $tags = Tag::orderBy('name')->get();
 
-        if (!$post){
+        $post = Post::with(['category', 'tags'])->find($id);
+
+        if (!$post) {
             abort(404);
         }
 
-        return view('admin.posts.edit', ['post' => $post, 'categories' => $categories]);
+        return view('admin.posts.edit', ['post' => $post, 'categories' => $categories, 'tags' => $tags]);
     }
 
     /**
@@ -63,10 +69,11 @@ class AdminPostsController extends Controller
      * @param id ID del post 
      * @return Vista admin.posts.delete
      */
-    public function delete($id){
+    public function delete($id)
+    {
         $post = Post::with('category')->find($id);
 
-        if (!$post){
+        if (!$post) {
             abort(404);
         }
 
@@ -81,66 +88,81 @@ class AdminPostsController extends Controller
      * @param Request $request (titulo, subtitulo, contenido, imagen, activo, categoria)
      * @return Vista admin.posts.index
      */
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         $validated = $request->validate([
             'title' => 'required|min:10',
             'subtitle' => 'required|min:20',
             'content' => 'required|min:100',
             'image' => 'required|image|mimes:jpg,webp|max:1024',
             'active' => 'nullable|boolean',
-            'category_id' => 'required|exists:categories,id'
+            'category_id' => 'required|exists:categories,id',
+            'tags' => 'required|array|min:1',
+            'tags.*' => 'exists:tags,id'
         ]);
-        
+
         //manejo de imagenes
         if ($request->hasFile('image')) {
             $path = $request->file('image')->store('posts', 'public');
             $validated['image'] = $path;
         }
 
-        Post::create($validated);
+        $post = Post::create($validated);
+
+        //relacion muchos a muchos con tags, conn sync evito duplicados
+        if ($request->filled('tags')) {
+            $post->tags()->sync($request->input('tags'));
+        }
+
 
         return redirect()
-        ->route('posts.index')
-        ->with('feedback.message', 'El post <strong>' . e($validated['title']) . '</strong> ha sido creado con exito');
+            ->route('posts.index')
+            ->with('feedback.message', 'El post <strong>' . e($validated['title']) . '</strong> ha sido creado con exito');
     }
 
     /**
      * Metodo que actualiza un post existente en la base de datos
      * 
-     * @param Request $request (titulo, subtitulo, contenido, imagen, activo, categoria)
+     * @param Request $request (titulo, subtitulo, contenido, imagen, activo, categoria, etiquetas)
      * @param Post $post id
      * @return Vista admin.posts.index
      */
-    public function update(Request $request, $post){
+    public function update(Request $request, $post)
+    {
 
-    $post = Post::find($post);
+        $post = Post::find($post);
 
-    if (!$post){
-        abort(404);
+        if (!$post) {
+            abort(404);
+        }
+
+        $validated = $request->validate([
+            'title' => 'required|min:10',
+            'subtitle' => 'required|min:20',
+            'content' => 'required|min:100',
+            'image' => 'nullable|image|mimes:jpg,webp|max:1024',
+            'active' => 'nullable|boolean',
+            'category_id' => 'exists:categories,id',
+            'tags' => 'required|array|min:1',
+            'tags.*' => 'exists:tags,id'
+        ]);
+
+        if ($request->hasFile('image')) {
+            //borrar la imagen antigua
+            Storage::disk('public')->delete($post->image);
+            $path = $request->file('image')->store('posts', 'public');
+            $validated['image'] = $path;
+        }
+
+        $post->update($validated);
+        if ($request->filled('tags')) {
+            $post->tags()->sync($request->input('tags'));
+        }
+
+        return redirect()
+            ->route('posts.index')
+            ->with('feedback.message', 'El post <strong>' . e($validated['title']) . '</strong> ha sido editado con exito');
     }
-
-    $validated = $request->validate([
-        'title' => 'required|min:10',
-        'subtitle' => 'required|min:20',
-        'content' => 'required|min:100',
-        'image' => 'nullable|image|mimes:jpg,webp|max:1024',
-        'active' => 'nullable|boolean', 
-        'category_id' => 'exists:categories,id',
-    ]);
-
-    if ($request->hasFile('image')) {
-        //borrar la imagen antigua
-        Storage::disk('public')->delete($post->image);
-        $path = $request->file('image')->store('posts', 'public');
-        $validated['image'] = $path;
-    }
-
-    $post->update($validated);
-
-     return redirect()
-        ->route('posts.index')
-        ->with('feedback.message', 'El post <strong>' . e($validated['title']) . '</strong> ha sido editado con exito');
-}
 
     /**
      * Metodo que elimina un post de la base de datos
@@ -148,17 +170,18 @@ class AdminPostsController extends Controller
      * @param Post $post id
      * @return Vista admin.posts.index
      */
-    public function destroy($post){
+    public function destroy($post)
+    {
         $post = Post::find($post);
 
         //borrar img del post de la db
         Storage::disk('public')->delete($post->image);
 
+        $post->tags()->detach();
         $post->delete();
 
-         return redirect()
-        ->route('posts.index')
-        ->with('feedback.message', 'El post <strong>' . e($post['title']) . '</strong> ha sido eliminado con exito');
+        return redirect()
+            ->route('posts.index')
+            ->with('feedback.message', 'El post <strong>' . e($post['title']) . '</strong> ha sido eliminado con exito');
     }
-
 }

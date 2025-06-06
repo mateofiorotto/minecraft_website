@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminCategoriesController;
 use App\Http\Controllers\AdminEditionsController;
 use App\Http\Controllers\AdminUsersController;
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\AdminTagsController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
@@ -40,6 +41,9 @@ Route::group (['middleware' => ['auth', 'admin']], function () {
 
     Route::resource('/admin/categories', AdminCategoriesController::class);
     Route::get('/admin/categories/{id}/delete', [AdminCategoriesController::class, 'delete'])->name('categories.delete');
+
+    Route::resource('/admin/tags', AdminTagsController::class);
+    Route::get('/admin/tags/{id}/delete', [AdminTagsController::class, 'delete'])->name('tags.delete');
 
     Route::resource('/admin/users', AdminUsersController::class);
     Route::get('/admin/users/{id}/delete', [AdminUsersController::class, 'delete'])->name('users.delete');

@@ -42,6 +42,9 @@
                             <x-nav-link route="categories.index">Categorias</x-nav-link>
                         </li>
                         <li class="nav-item">
+                            <x-nav-link route="tags.index">Etiquetas</x-nav-link>
+                        </li>
+                        <li class="nav-item">
                           <x-nav-link route="users.index">Usuarios</x-nav-link>
                         </li>
                     </ul>

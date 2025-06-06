@@ -12,7 +12,7 @@
                         icon: 'error',
                         title: '¡Error!',
                         html: `Revisa los errores marcados`,
-                         background: '#533c14',
+                        background: '#533c14',
                         color: '#ffffff',
                         confirmButtonColor: '#3c9f2f',
                         confirmButtonText: 'Aceptar'
@@ -28,9 +28,10 @@
             <div class="row justify-content-center align-items-center">
                 <div class="col-lg-6 col-md-12 mb-3">
                     <label for="title" class="form-label">Título<span class="obligatorio">*</span></label>
-                    <input value="{{ $errors->has('title') ? '' : old('title')  }}" type="text" name="title" id="title" class="form-control">
+                    <input value="{{ $errors->has('title') ? '' : old('title') }}" type="text" name="title"
+                        id="title" class="form-control">
 
-                    @if($errors->has('title'))
+                    @if ($errors->has('title'))
                         <div class="mt-2 text-danger">
                             <p>{{ $errors->first('title') }}</p>
                         </div>
@@ -39,9 +40,10 @@
 
                 <div class="col-lg-6 col-md-12 mb-3">
                     <label for="subtitle" class="form-label">Subtítulo<span class="obligatorio">*</span></label>
-                    <input value="{{ $errors->has('subtitle') ? '' : old('subtitle')  }}" type="text" name="subtitle" id="subtitle" class="form-control">
+                    <input value="{{ $errors->has('subtitle') ? '' : old('subtitle') }}" type="text" name="subtitle"
+                        id="subtitle" class="form-control">
 
-                    @if($errors->has('subtitle'))
+                    @if ($errors->has('subtitle'))
                         <div class="mt-2 text-danger">
                             <p>{{ $errors->first('subtitle') }}</p>
                         </div>
@@ -52,7 +54,7 @@
                     <label for="content" class="form-label">Contenido<span class="obligatorio">*</span></label>
                     <textarea name="content" id="content" rows="5" class="form-control">{{ $errors->has('content') ? '' : old('content') }}</textarea>
 
-                    @if($errors->has('content'))
+                    @if ($errors->has('content'))
                         <div class="mt-2 text-danger">
                             <p>{{ $errors->first('content') }}</p>
                         </div>
@@ -63,7 +65,7 @@
                     <label for="image" class="form-label">Imagen<span class="obligatorio">*</span></label>
                     <input type="file" name="image" id="image" class="form-control">
 
-                    @if($errors->has('image'))
+                    @if ($errors->has('image'))
                         <div class="mt-2 text-danger">
                             <p>{{ $errors->first('image') }}</p>
                         </div>
@@ -77,7 +79,7 @@
                         <option value="0" {{ old('active') == '0' ? 'selected' : '' }}>Desactivado</option>
                     </select>
 
-                    @if($errors->has('active'))
+                    @if ($errors->has('active'))
                         <div class="mt-2 text-danger">
                             <p>{{ $errors->first('active') }}</p>
                         </div>
@@ -94,12 +96,40 @@
                     <p class="mt-3">¿No esta la categoria que buscas? <a href="{{ route('categories.create') }}">Crea
                             una</a></p>
 
-                    @if($errors->has('category_id'))
+                    @if ($errors->has('category_id'))
                         <div class="mt-2 text-danger">
                             <p>{{ $errors->first('category_id') }}</p>
                         </div>
                     @endif
                 </div>
+
+                <div class="col-lg-6 col-md-12 mb-5">
+                    <label class="form-label fw-bold">Etiquetas</label>
+                    <div class="row">
+                        @foreach ($tags as $tag)
+                            <div class="col-md-6 mb-2">
+                                <div class="form-check d-flex align-items-center" style="word-break: break-word;">
+                                    <input class="form-check-input me-2" type="checkbox" name="tags[]"
+                                        value="{{ $tag->id }}" id="tag{{ $tag->id }}"
+                                        {{ in_array($tag->id, old('tags', [])) ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="tag{{ $tag->id }}">
+                                        {{ $tag->name }}
+                                    </label>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+
+                    @if ($errors->has('tags'))
+                        <div class="mt-2 text-danger">
+                            <p>{{ $errors->first('tags') }}</p>
+                        </div>
+                    @endif
+
+                    <p class="mt-3">¿No está la etiqueta que buscás? <a href="{{ route('tags.create') }}">Creá
+                            una</a></p>
+                </div>
+
 
                 <div class="mb-5 text-center">
                     <button class="btn p-3 btn-primary crear-crud" type="submit">Crear</button>

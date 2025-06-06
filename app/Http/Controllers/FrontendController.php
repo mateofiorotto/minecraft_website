@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Edition;
 use App\Models\Category;
+use App\Models\Tag;
 use Illuminate\Support\Facades\Auth;
 
 class FrontendController extends Controller
@@ -29,18 +30,45 @@ class FrontendController extends Controller
      */
     public function posts(Request $request)
     {
+        $query = Post::with('category', 'tags')->where('active', true);
 
-        $query = Post::with('category')->where('active', true);
-
+        //filtrar x categoria
         if ($request->filled('category') && $request->category !== 'all') {
             $query->where('category_id', $request->category);
         }
 
-        $posts = $query->paginate(6);
+        //filtrar x buscador --> titulo, subtitulo o contenido
+        if ($request->filled('query')) {
+            $search = $request->get('query');
+            $query->where(function ($q) use ($search) {
+                $q->where('title', 'like', "%{$search}%")
+                    ->orWhere('subtitle', 'like', "%{$search}%")
+                    ->orWhere('content', 'like', "%{$search}%");
+            });
+        }
 
+        //filtrar x etiquetas
+        if ($request->filled('tags')) {
+        $tags = $request->get('tags');
+        foreach ($tags as $tagId) {
+            $query->whereHas('tags', function ($q) use ($tagId) {
+                $q->where('tags.id', $tagId);
+            });
+        }
+    }
+
+        //paginacion
+        $posts = $query->paginate(6)->appends($request->all());
+
+        //llevar categorias y tags al form
         $categories = Category::all();
+        $tags = Tag::all();
 
-        return view('posts', ['posts' => $posts, 'categories' => $categories]);
+        return view('posts', [
+            'posts' => $posts,
+            'categories' => $categories,
+            'tags' => $tags,
+        ]);
     }
 
     /**
@@ -51,7 +79,7 @@ class FrontendController extends Controller
     public function postById($id)
     {
 
-        $post = Post::with('category')->find($id);
+        $post = Post::with(['category', 'tags'])->find($id);
 
         //Si el post no existe o no esta activo ir a 404
         if (!$post || $post->active == false) {
@@ -79,16 +107,17 @@ class FrontendController extends Controller
         return view('editions', ['editions' => $editions]);
     }
 
-      /**
+    /**
      * Retornar la edicion individual al frontend
      * 
      * @return Vista edition y el "objeto" edition
      */
-    public function editionById($id){
+    public function editionById($id)
+    {
 
         $edition = Edition::find($id);
 
-        if (!$edition){
+        if (!$edition) {
             abort(404);
         }
 

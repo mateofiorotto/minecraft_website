@@ -1,8 +1,8 @@
 <x-layout-admin>
-    <x-slot:title>Administrar Ediciones</x-slot:title>
-    <section class="container" id="index-editions">
+    <x-slot:title>Administrar Etiquetas</x-slot:title>
+    <section class="container" id="index-tags">
 
-        <h2 class="mt-5 mb-5 text-center fw-bold">Administrar Ediciones</h2>
+        <h2 class="mt-5 mb-5 text-center fw-bold">Administrar Etiquetas</h2>
 
         @if (session()->has('feedback.message'))
             <script>
@@ -20,10 +20,26 @@
             </script>
         @endif
 
+        @if (session()->has('error.in.delete'))
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    Swal.fire({
+                        icon: 'error',
+                        title: '¡Error!',
+                        html: `{!! session()->get('error.in.delete') !!}`,
+                        background: '#533c14',
+                        color: '#ffffff',
+                        confirmButtonColor: '#3c9f2f',
+                        confirmButtonText: 'Aceptar'
+                    });
+                });
+            </script>
+        @endif
+
         <div class="text-center mt-5 mb-5">
-            <a href="{{ route('editions.create') }}" class="crear fw-bold btn btn-primary"><i
+            <a href="{{ route('tags.create') }}" class="crear fw-bold btn btn-primary"><i
                     class="me-2 bi bi-plus align-middle"><span class="d-none">Icono de crear</span></i>Crear nueva
-                EDICION</a>
+                ETIQUETA</a>
         </div>
 
         <div class="row mb-5 d-flex align-items-center p-4 p-lg-0">
@@ -34,12 +50,7 @@
                         <!-- cols -->
                         <tr>
                             <th class="text-center" scope="col">ID</th>
-                            <th class="text-center" scope="col">Titulo</th>
-                            <th class="text-center" scope="col">Subtitulo</th>
-                            <th class="text-center" class="th-desc" scope="col">Contenido</th>
-                            <th class="text-center" class="th-desc" scope="col">Imagen</th>
-                            <th class="text-center" scope="col">Bestseller</th>
-                            <th class="text-center" scope="col">Precio</th>
+                            <th class="text-center" scope="col">Nombre</th>
                             <th class="text-center"><i class="bi bi-hammer"><span class="ms-3">Acciones</span></i>
                             </th>
                         </tr>
@@ -47,24 +58,19 @@
 
                     <!--campos-->
                     <tbody id="campos">
-                        @foreach ($editions as $edition)
+                        @foreach ($tags as $tag)
                             <tr class="campos">
-                                <td class="p-3 text-center">{{ $edition->id }}</td>
-                                <td class="p-3 text-center">{{ $edition->title }}</td>
-                                <td class="p-3 text-center">{{ substr($edition->subtitle, 0, 50) }}...</td>
-                                <td class="p-3 text-center">{{ substr($edition->content, 0, 50) }}...</td>
-                                <td class="p-3 text-center">{{ substr($edition->image, 0, 20) }}...</td>
-                                <td class="p-3 text-center">{{ $edition->bestseller == 1 ? 'Sí' : 'No' }}</td>
-                                <td class="p-3 text-center">${{ $edition->price }}</td>
+                                <td class="p-3 text-center">{{ $tag->id }}</td>
+                                <td class="p-3 text-center">{{ $tag->name }}</td>
                                 <td class="p-3 text-center iconos-acciones">
                                     <div
                                         class="ps-5 pe-5 pt-2 pb-2 col d-flex justify-content-center gap-2 mt-2 mt-md-0">
-                                        <a href="{{ route('editions.edit', $edition->id) }}"
+                                        <a href="{{ route('tags.edit', $tag->id) }}"
                                             class="me-2 editar btn btn-sm btn-primary">
                                             <i class="bi bi-pencil-square"><span class="d-none">Icono de
                                                     editar</span></i>
                                         </a>
-                                        <a href="{{ route('editions.delete', $edition->id) }}"
+                                        <a href="{{ route('tags.delete', $tag->id) }}"
                                             class="borrar btn btn-sm btn-danger">
                                             <i class="bi bi-trash3-fill"><span class="d-none">Icono de borrar</span></i>
                                         </a>
@@ -78,7 +84,7 @@
         </div>
 
         <div class="links-nav-paginacion mt-5 mb-5">
-            {{ $editions->links('pagination::bootstrap-5') }}
+            {{ $tags->links('pagination::bootstrap-5') }}
         </div>
 
 

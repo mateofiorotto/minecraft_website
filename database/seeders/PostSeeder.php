@@ -22,8 +22,8 @@ class PostSeeder extends Seeder
                 'image' => 'posts/trial-chambers.webp', //servira como portada de post y banner
                 'active' => true,
                 'category_id' => 1, //actualizaciones (1)
-                'created_at' => Carbon::now()->subDays(rand(1, 25)),
-                'updated_at' => Carbon::now(),
+                'created_at' => Carbon::now()->subDays(rand(1, 365)),
+                'updated_at' => Carbon::now()
             ],
             [
                 'title' => 'MineCells MOD: una experiencia distinta',
@@ -32,8 +32,8 @@ class PostSeeder extends Seeder
                 'image' => 'posts/minecells.webp',
                 'active' => true,
                 'category_id' => 2, //mods y add-ons (1)
-                'created_at' => Carbon::now()->subDays(rand(1, 25)),
-                'updated_at' => Carbon::now(),
+                'created_at' => Carbon::now()->subDays(rand(1, 365)),
+                'updated_at' => Carbon::now()
             ],
             [
                 'title' => 'Lanzamiento de la película de Minecraft',
@@ -42,8 +42,8 @@ class PostSeeder extends Seeder
                 'image' => 'posts/pelicula-minecraft.webp', //servira como portada de post y banner
                 'active' => true,
                 'category_id' => 3, //eventos (1)
-                'created_at' => Carbon::now()->subDays(rand(1, 25)),
-                'updated_at' => Carbon::now(),
+                'created_at' => Carbon::now()->subDays(rand(1, 365)),
+                'updated_at' => Carbon::now()
             ],
             [
                 'title' => 'Los shaders mas realistas: visualmente impactante',
@@ -52,8 +52,8 @@ class PostSeeder extends Seeder
                 'image' => 'posts/shaders-realistas.webp',
                 'active' => true,
                 'category_id' => 2, //mods y add-ons (2)
-                'created_at' => Carbon::now()->subDays(rand(1, 25)),
-                'updated_at' => Carbon::now(),
+                'created_at' => Carbon::now()->subDays(rand(1, 365)),
+                'updated_at' => Carbon::now()
             ],
             [
                 'title' => 'Se acerca la Mob Vote: vota a tu mob favorito',
@@ -62,9 +62,50 @@ class PostSeeder extends Seeder
                 'image' => 'posts/mob-vote.webp', //servira como portada de post y banner
                 'active' => true,
                 'category_id' => 3, //evento (2)
-                'created_at' => Carbon::now()->subDays(rand(1, 25)),
-                'updated_at' => Carbon::now(),
+                'created_at' => Carbon::now()->subDays(rand(1, 365)),
+                'updated_at' => Carbon::now()
             ]
+        ]);
+
+        DB::table('post_tag')->insert([
+            //post 1: nueva version, snapshot, correccion de bugs
+            [
+                'post_id' => 1,
+                'tag_id' => 1
+            ],
+            [
+                'post_id' => 1,
+                'tag_id' => 2
+            ],
+            [
+                'post_id' => 1,
+                'tag_id' => 3
+            ],
+            //Post 2: forge y fabric
+            [
+                'post_id' => 2,
+                'tag_id' => 4
+            ],
+            [
+                'post_id' => 2,
+                'tag_id' => 5
+            ],
+            //post 3: tiempo limitado
+            [
+                'post_id' => 3,
+                'tag_id' => 7
+            ],
+            //post 4: sodium & optifine
+            [
+                'post_id' => 4,
+                'tag_id' => 6
+            ],
+            //post 5: tiempo limitado
+            [
+                'post_id' => 5,
+                'tag_id' => 7
+            ],
+
         ]);
     }
 }

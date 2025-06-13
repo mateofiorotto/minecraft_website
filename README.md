@@ -154,7 +154,7 @@ Run the Apache and MySQL Services.
 
 3. Check .env.example
 
-Create and set your environment variables correctly (.env)
+Create and set your environment variables correctly (.env, mail + db)
 
 4. Enter to the project folder (with the CLI) and run: <br>
 
@@ -305,7 +305,7 @@ Inicia los servicios Apache y MySQL
 
 3. Chequea .env.example
 
-Crea y pone tus variables de entorno correcamente (.env)
+Crea y pone tus variables de entorno correcamente (.env, mail + bd)
 
 4. Entra a la carpeta del proyecto (con la CLI) y ejecuta: <br>
 

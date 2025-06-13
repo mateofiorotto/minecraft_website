@@ -8,6 +8,8 @@ use App\Models\Edition;
 use App\Models\Category;
 use App\Models\Tag;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ContactResponse;
 
 class FrontendController extends Controller
 {
@@ -49,13 +51,13 @@ class FrontendController extends Controller
 
         //filtrar x etiquetas
         if ($request->filled('tags')) {
-        $tags = $request->get('tags');
-        foreach ($tags as $tagId) {
-            $query->whereHas('tags', function ($q) use ($tagId) {
-                $q->where('tags.id', $tagId);
-            });
+            $tags = $request->get('tags');
+            foreach ($tags as $tagId) {
+                $query->whereHas('tags', function ($q) use ($tagId) {
+                    $q->where('tags.id', $tagId);
+                });
+            }
         }
-    }
 
         //paginacion
         $posts = $query->paginate(6)->appends($request->all());
@@ -132,6 +134,13 @@ class FrontendController extends Controller
             'description' => 'required|min:50'
         ]);
 
-        return view('response-contact', ['user' => Auth::user()]);
+        $user = Auth::user();
+        $problem = $request->input('problem');
+        $description = $request->input('description');
+
+        // Enviar mail al propio usuario o a un admin
+        Mail::to($user->email)->send(new ContactResponse($user, $problem, $description));
+
+        return view('response-contact', ['user' => $user]);
     }
 }

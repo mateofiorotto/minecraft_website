@@ -1,3 +1,10 @@
+@php
+    $usuario = auth()->user(); //obtener el usuario logueado
+
+    //obtener las ediciones compradas del usuario, si no hay usuario se guarda vacio (para evitar errores)
+    $edicionesCompradas = $usuario ? $usuario->editions->where('pivot.status', 'buyed')->pluck('id')->toArray() : [];
+@endphp
+
 <x-layout>
     <x-slot:title>Ediciones</x-slot:title>
     <section class="mb-5 mt-5 container" id="ediciones">
@@ -14,7 +21,19 @@
                 <p class="text-center">No hay ediciones disponibles por el momento.</p>
             @else
                 @foreach ($editions as $edition)
-                    <div class="col-md-12 col-lg-4 mb-4 animar-tarjeta {{$edition->bestseller == 1 ? 'bestseller' : ''}}">
+                    <div class="col-md-12 col-lg-4 mb-4 animar-tarjeta positon-relative {{ $edition->bestseller == 1 ? 'bestseller' : '' }}">
+                        @php
+                            //asignar a una variable si el usuario tiene la edicion comprada
+                            $comprado = in_array($edition->id, $edicionesCompradas);
+                        @endphp
+                        <div>
+                            @if ($comprado)
+                            <!--Si esta comprado le asignamos una "etiqueta" o badge-->
+                                <div class="position-absolute edicion-adquirida-badge">
+                                    <span class="badge">Adquirido</span>
+                                </div>
+                            @endif
+                        </div>
                         <a class="edicion-tarjeta" href="{{ route('edition', $edition->id) }}">
                             <img class="img-fluid" src="{{ asset('storage/' . $edition->image) }}"
                                 alt="{{ $edition->title }}">

@@ -14,8 +14,8 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         //llamamos a los seeders personalizados
-        $this->call(UserSeeder::class);
         $this->call(EditionSeeder::class);
+        $this->call(UserSeeder::class);
         $this->call(CategorySeeder::class);
         $this->call(TagSeeder::class);
         $this->call(PostSeeder::class);

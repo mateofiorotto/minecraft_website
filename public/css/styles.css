@@ -230,11 +230,11 @@ iframe {
     background-color: #3c9f2f !important;
     transition: all 0.2s ease-in-out;
     border: none !important;
-    font-size: 2em !important;
+    font-size: 1.75em !important;
     font-weight: bold !important;
     text-transform: uppercase !important;
     transition: all 0.3s ease-in-out;
-    padding: 1.5em !important;
+    padding: 1em !important;
     text-decoration: none !important;
     color: white;
     display: block;
@@ -329,12 +329,34 @@ iframe {
     text-decoration: none !important;
     color: white;
     display: block;
-    width: 30%;
+    width: 40%;
     transition: all 0.3s ease-in-out;
 }
 
-.comprar-edicion-btn:hover {
+.reembolsar-edicion-btn {
+    background-color: rgb(255, 0, 0) !important;
+    transition: all 0.2s ease-in-out;
+    border: none !important;
+    font-size: 1.2em !important;
+    font-weight: bold !important;
+    text-transform: uppercase !important;
+    transition: all 0.3s ease-in-out;
+    padding: 1em !important;
+    text-decoration: none !important;
+    color: white;
+    display: block;
+    width: 40%;
+    transition: all 0.3s ease-in-out;
+}
+
+.comprar-edicion-btn:hover, .reembolsar-edicion-btn:hover {
     background-color: rgb(32, 129, 190) !important;
+}
+
+.edicion-adquirida-badge {
+    background-color: black;
+    padding: 0.5em; 
+    font-size: 1.2em;
 }
 
 /*CONTACTO*/
@@ -407,12 +429,17 @@ form label {
         margin-top: 2em !important;
     }
 
-    .comprar-edicion-btn {
-        margin: auto !important
-    }
-
     .filtrar-categoria {
         width: 50% !important;
+    }
+
+    .comprar-edicion-btn, .reembolsar-edicion-btn {
+        margin: auto !important;
+    }
+
+    .btn-comprar-home {
+        width: 60% !important;
+        margin-bottom: 1em !important;
     }
 }
 
@@ -455,11 +482,12 @@ form label {
 
     .btn-comprar-home {
         width: 70% !important;
-        margin-bottom: 2em !important;
+        margin-bottom: 1em !important;
     }
 
-    .comprar-edicion-btn {
+    .comprar-edicion-btn, .reembolsar-edicion-btn {
         width: 50% !important;
+        margin: auto !important;
     }
 
     .filtrar-categoria {
@@ -478,7 +506,7 @@ form label {
             width: 80% !important;
         }
 
-        .comprar-edicion-btn {
+        .comprar-edicion-btn, .reembolsar-edicion-btn {
             width: 60% !important;
         }
 

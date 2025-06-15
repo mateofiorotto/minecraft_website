@@ -48,5 +48,33 @@ class UserSeeder extends Seeder
                 'updated_at' => Carbon::now()
             ]
         ]);
+
+        //Juegos que el user compro
+        DB::table('acquisitions')->insert([
+        [
+            'user_id' => 1,
+            'edition_id' => 1,
+            'buy_date' => Carbon::now()->subDays(3),
+            'status' => 'buyed',
+            'created_at' => Carbon::now()->subDays(3),
+            'updated_at' => Carbon::now(),
+        ],
+        [
+            'user_id' => 1,
+            'edition_id' => 2,
+            'buy_date' => Carbon::now()->subDays(5),
+            'status' => 'buyed',
+            'created_at' => Carbon::now()->subDays(5),
+            'updated_at' => Carbon::now(),
+        ],
+        [
+            'user_id' => 2,
+            'edition_id' => 1,
+            'buy_date' => Carbon::now()->subDays(13),
+            'status' => 'buyed',
+            'created_at' => Carbon::now()->subDays(13),
+            'updated_at' => Carbon::now(),
+        ],
+    ]);
     }
 }

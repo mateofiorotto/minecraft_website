@@ -273,8 +273,11 @@ Se utiliza $errors en las vistas para informar de errores debajo de cada campo. 
 - Se agrego paginación
 - phpDoc
 - Tabla Categorias
+- Tabla etiquetas
 - Registro
+- Buscador y filtros
 - Alertas con sweetalert2
+- Mailtrap y envio de mails
 - SoftDeletes
 
 Se evaluará y tendrá impacto en la nota también:
@@ -330,3 +333,17 @@ Ejecuta:
 Y entra al servidor local (por defecto la URL es 127.0.0.1:8000)
 
 **NOTA:** Edita librementa cualquier configuración para ajustarla a tu entorno local.
+
+
+POR HACER:
+- Relacion edicion - adquisicion - usuarios - OK
+- Seeder (al menos un user tiene que tener una edicion adquirida) - OK
+- Badge "adquirido" - OK
+- achicar btn comprar home - OK
+
+
+- ESTILOS DE BUSCADOR y filtros
+- MAIL al comprar / reembolsar
+- En usuarios, en el crud poner que ediciones adquiridas tiene. ASEGURARSE DE QUE NO SE PUEDAN CARGAR NI EDITAR. el borrar debe eliminar las ediciones ya compradas
+- Metodos para compra, reembolso y envio de mail a comprar (descargar launcher y activa con la key, en el launcher configurar cuenta1), redireccion a vista "gracias por comprar"
+- Video

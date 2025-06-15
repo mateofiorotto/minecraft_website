@@ -17,4 +17,11 @@ class Edition extends Model
         'bestseller',
         'price'
     ];
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'acquisitions')
+            ->withPivot('buy_date', 'status')
+            ->withTimestamps();
+    }
 }

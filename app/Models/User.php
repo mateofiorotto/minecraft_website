@@ -50,4 +50,10 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function editions(){
+        return $this->belongsToMany(Edition::class, 'acquisitions')
+                ->withPivot('buy_date', 'status')
+                ->withTimestamps();
+    }
 }

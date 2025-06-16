@@ -27,11 +27,19 @@
                         {{ $edition->price }}</p>
                     @if ($adquisicion && $adquisicion->status === 'buyed')
                         <div data-aos="fade-left" class="text-center mt-3 pt-3">
-                            <a class="reembolsar-edicion-btn" href="#">Reembolsar</a>
+                            <form action="{{ route('refund-edition', $edition->id) }}" method="POST">
+                                @csrf
+                                @method('POST')
+                                <button type="submit" class="reembolsar-edicion-btn">Reembolsar</button>
+                            </form>
                         </div>
                     @else
                         <div data-aos="fade-left" class="text-center mt-3 pt-3">
-                            <a class="comprar-edicion-btn" href="#">Comprar</a>
+                            <form action="{{ route('buy-edition', $edition->id) }}" method="POST">
+                                @csrf
+                                @method('POST')
+                                <button type="submit" class="comprar-edicion-btn">Comprar</button>
+                            </form>
                         </div>
                     @endif
                 </div>

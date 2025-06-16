@@ -7,6 +7,7 @@ use App\Http\Controllers\AdminEditionsController;
 use App\Http\Controllers\AdminUsersController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\AdminTagsController;
+use App\Http\Controllers\AcquistionController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +25,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/response-contact', function () {
     return redirect()->route('contact')->with('feedback.message', 'Debes enviar el formulario correctamente.');
     });
+    Route::get('/acquired', [FrontendController::class, 'acquired'])->name('acquired');
+    Route::get('/refunded', [FrontendController::class, 'refunded'])->name('refunded');
+   
+    Route::post('/buy-edition/{id}', [AcquistionController::class, 'buyEdition'])->name('buy-edition');
+    Route::post('/refunded-edition/{id}', [AcquistionController::class, 'refundEdition'])->name('refund-edition');
 });
 
 //rutas backend

@@ -10,41 +10,42 @@ use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Mail\Mailables\Address;
 
-class ContactResponse extends Mailable
+class RefundConfirmation extends Mailable
 {
     use Queueable, SerializesModels;
 
     public $user;
-    public $problem;
-    public $description;
+    public $edition;
     public $ticket;
 
-    public function __construct($user, $problem, $description)
+    /**
+     * Create a new message instance.
+     */
+     public function __construct($user, $edition)
     {
         $this->user = $user;
-        $this->problem = $problem;
-        $this->description = $description;
+        $this->edition = $edition;
         $this->ticket = '#' . mt_rand(100000000, 999999999);
     }
 
     /**
-     * Funcion que define quien lo envia el mail y su titulo.
+     * Get the message envelope.
      */
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: $this->ticket . ' - Respuesta a tu solicitud de contacto - Minecraft',
-            from: new Address('contact@minecraft.com', 'Minecraft'),
+            subject: $this->ticket . ' - Reembolso procesado - Minecraft',
+            from: new Address('reembolsos@minecraft.com', 'Minecraft')
         );
     }
 
     /**
-     * Contenido del mail.
+     * Get the message content definition.
      */
-    public function content(): Content
+     public function content(): Content
     {
         return new Content(
-            view: 'emails.response-mail',
+            view: 'emails.refund-confirmation'
         );
     }
 

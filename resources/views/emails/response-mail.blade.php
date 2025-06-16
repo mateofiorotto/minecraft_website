@@ -12,6 +12,6 @@
     <p><strong>Usuario:</strong> {{ $user->name }} ({{ $user->email }})</p>
     <p><strong>Problema:</strong> {{ $problem }}</p>
     <p><strong>Descripcion:</strong> {{ $description }}</p>
-    <p><strong>¡Saludos!</strong></p>
+    <p><strong>¡SALUDOS!</strong></p>
 </body>
 </html>

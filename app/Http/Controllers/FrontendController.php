@@ -126,6 +126,12 @@ class FrontendController extends Controller
         return view('edition', ['edition' => $edition]);
     }
 
+    /**
+     * Retornar la vista de respuesta de contacto al frontend
+     * 
+     * @param Request $request
+     * @return Vista response-contact
+     */
     public function responseContact(Request $request)
     {
 
@@ -135,12 +141,63 @@ class FrontendController extends Controller
         ]);
 
         $user = Auth::user();
+
         $problem = $request->input('problem');
         $description = $request->input('description');
 
-        // Enviar mail al propio usuario o a un admin
+        //enviar mail
         Mail::to($user->email)->send(new ContactResponse($user, $problem, $description));
 
         return view('response-contact', ['user' => $user]);
+    }
+
+    /**
+     * Retornar la vista de edicion adquirida al frontend
+     * 
+     * @return Vista acquired
+     */
+     public function acquired()
+    {
+        $user = Auth::user();
+        $editionId = session('edition_id');
+
+        // Si alguien entra directamente sin sesión redirigir
+        if (!$editionId) {
+            return redirect()->route('home');
+        }
+
+        $edition = Edition::find($editionId);
+
+        //si intenta entrar x url, ir a home
+        if (!$edition) {
+            return redirect()->route('home');
+        }
+
+        return view('acquired', ['edition' => $edition, 'user' => $user]);
+    }
+
+    /**
+     * Retornar la vista de edicion reembolsada al frontend
+     * 
+     * @return Vista refunded
+     */
+    public function refunded()
+    {
+        $user = Auth::user();
+        $editionId = session('edition_id');
+
+        // Si alguien entra directamente sin sesión redirigir
+        if (!$editionId) {
+            return redirect()->route('home');
+        }
+
+        $edition = Edition::find($editionId);
+
+        //si intenta entrar x url, ir a home
+        if (!$edition) {
+            return redirect()->route('home');
+        }
+
+        return view('refunded', ['edition' => $edition, 'user' => $user]);
     }
 }

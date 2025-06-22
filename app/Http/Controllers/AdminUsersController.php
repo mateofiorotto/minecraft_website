@@ -70,6 +70,9 @@ class AdminUsersController extends Controller
     /**
      * Metodo que almacena un nuevo usuario en la base de datos
      * 
+     * IMPORTANTE: No se modifica la relacion con ediciones acá.
+     * La relación con ediciones (juegos comprados) se gestiona por el sistema de compras y no debe editarse/crearse manualmente.
+     * 
      * @param Request $request (nombre, email, password, role, username)
      * @return Vista admin.users.index
      */
@@ -95,6 +98,9 @@ class AdminUsersController extends Controller
 
     /**
      * Metodo que actualiza un usuario existente en la base de datos
+     * 
+     * IMPORTANTE: No se modifica la relacion con ediciones acá.
+     * La relación con ediciones (juegos comprados) se gestiona por el sistema de compras y no debe editarse/crearse manualmente.
      * 
      * @param Request $request
      * @param user $user id
@@ -131,6 +137,9 @@ class AdminUsersController extends Controller
 
     /**
      * Metodo que elimina un usuario de la base de datos
+     * 
+     * IMPORTANTE: Este metodo no elimina compras realizadas por el usuario. Se preservan por "posibles errores" y si se quiere restaurar la cuenta
+     * del usuario simplemente revertimos el soft delete. Esto es para no perder informacion importante de las compras realizadas.
      * 
      * @param user $user id
      * @return Vista admin.users.index

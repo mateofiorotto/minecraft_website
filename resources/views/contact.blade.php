@@ -56,7 +56,10 @@
             </div>
 
             <div class="text-center pt-5">
-                <button type="submit" class="btn-enviar-contacto mt-4">Enviar</button>
+                <button 
+                type="submit" 
+                class="btn-enviar-contacto mt-4"
+                onclick="this.disabled = true; this.classList.add('btn-disabled'); this.form.submit();">Enviar</button>
             </div>
         </form>
 

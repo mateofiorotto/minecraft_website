@@ -335,17 +335,17 @@ Y entra al servidor local (por defecto la URL es 127.0.0.1:8000)
 **NOTA:** Edita librementa cualquier configuración para ajustarla a tu entorno local.
 
 
-POR HACER:
+Cambios realizados para el 2do parcial:
 - Relacion edicion - adquisicion - usuarios - OK
+  - Metodos para compra, reembolso, redireccion a vistas, mails - OK
+- Etiquetas agregadas (relacion N:N con posteos) - OK
+- MAILS - ok
 - Seeder (al menos un user tiene que tener una edicion adquirida) - OK
-- Badge "adquirido" - OK
-- achicar btn comprar home - OK
-- Metodos para compra, reembolso, redireccion a vistas - OK
-- MAIL al comprar / reembolsar - OK
+- En usuarios, en el crud poner que ediciones adquiridas tiene. --> OK, NO SE PUEDEN CARGAR MANUALMENTE NI EDITAR YA QUE DE ESO SE ENCARGA EL SIST. DE COMPRAS Y REEMBOLSOS, TAMPOCO SE ELIMINAN DE LA DB DEBIDO A SOFT DELETES
+- Buscador - OK
 
-- En usuarios, en el crud poner que ediciones adquiridas tiene. Agregar a cargar y editar tambien. El borrar NO debe eliminar las ediciones ya compradas (porque usuarios tiene softdeletes)
-
+MAÑANA:
 - ESTILOS DE BUSCADOR y filtros
-- IMGS distintas para reembolso - compra
 - Video
-- modificar readme (para el final)
+
+- modificar readme --> Para el final cuando tenga todo integrado

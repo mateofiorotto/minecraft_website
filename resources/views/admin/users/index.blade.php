@@ -38,6 +38,7 @@
                             <th class="text-center" scope="col">Usuario</th>
                             <th class="text-center" scope="col">Email</th>
                             <th class="text-center" scope="col">Rol</th>
+                            <th class="text-center" scope="col">Ediciones compradas</th>
                             <th class="text-center"><i class="bi bi-hammer"><span class="ms-3">Acciones</span></i>
                             </th>
                         </tr>
@@ -52,6 +53,22 @@
                                 <td class="p-3 text-center">{{ $user->username }}</td>
                                 <td class="p-3 text-center">{{ $user->email }}</td>
                                 <td class="p-3 text-center">{{ $user->role }}</td>
+                                <td class="p-3 text-center">
+                                    @php
+                                        //solo muestra las ediciones que el usuario ha comprado, no reembolsadas
+                                        $buyedEditions = $user->editions->filter(
+                                            fn($edition) => $edition->pivot->status === 'buyed',
+                                        );
+                                    @endphp
+
+                                    @if ($buyedEditions->count() > 0)
+                                        @foreach ($buyedEditions as $edition)
+                                            {{ $loop->last ? $edition->title . '.' : $edition->title . ', ' }}
+                                        @endforeach
+                                    @else
+                                        No ha comprado ninguna edición
+                                    @endif
+                                </td>
                                 <td class="p-3 text-center iconos-acciones">
                                     <div
                                         class="ps-5 pe-5 pt-2 pb-2 col d-flex justify-content-center gap-2 mt-2 mt-md-0">

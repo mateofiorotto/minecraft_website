@@ -41,6 +41,16 @@ img {
     margin: auto;
 }
 
+.btn-disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.btn-disabled:hover {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
 .links-nav-paginacion p {
     color: white !important;
 }
@@ -282,6 +292,106 @@ iframe {
     padding: 0em !important;
 }
 
+.swal2-modal {
+    background-color: black !important;
+    padding: 1em;
+    border: 1px solid white;
+}
+
+.swal2-modal h2 {
+    color: white !important;
+    font-weight: bold !important;
+    text-transform: uppercase !important;
+}
+
+.swal2-close {
+    color: white !important;
+    transition: all 0.3s ease-in-out;
+}
+
+.swal2-close:hover {
+    color: #1fff02 !important;
+}
+
+.modal-filtros label {
+    color: white !important;
+    font-weight: bold !important;
+}
+
+.btn-filtrar-posteos-modal {
+    background-color: #3c9f2f !important;
+    transition: all 0.2s ease-in-out;
+    border: none !important;
+    font-size: 1.2em !important;
+    font-weight: bold !important;
+    text-transform: uppercase !important;
+    transition: all 0.3s ease-in-out;
+    padding: 1em !important;
+    text-decoration: none !important;
+    color: white !important;
+    display: block !important;
+    width: 36%;
+    margin: 1.5em auto !important;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-filtrar-posteos-modal:hover {
+    background-color: rgb(32, 129, 190) !important;
+}
+
+.form-check {
+    align-items: center !important;
+    vertical-align: middle !important;
+    font-size: 0.9em !important;
+}
+
+.seleccionar-etiquetas .form-check-label {
+    font-weight: 400 !important;
+}
+
+.modal-filtros select, .busqueda input {
+    width: 70%;
+    display: block;
+    margin: auto;
+}
+
+.busqueda input {
+    background-color: black !important;
+    color: white !important;
+    font-size: 1.2em !important;
+}
+
+.busqueda input::placeholder {
+    color: rgba(255, 255, 255, 0.5) !important;
+    font-size: 0.9em !important;
+}
+
+.btn-filtrar-noticias {
+    background-color: #3c9f2f !important;
+    transition: all 0.2s ease-in-out;
+    border: none !important;
+    font-size: 1.2em !important;
+    font-weight: bold !important;
+    text-transform: uppercase !important;
+    transition: all 0.3s ease-in-out;
+    padding: 1em !important;
+    text-decoration: none !important;
+    color: white !important;
+    display: block !important;
+    width: 40%;
+    margin: auto !important;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-filtrar-noticias:hover {
+    background-color: rgb(32, 129, 190) !important;
+}
+
+.seleccionar-etiquetas {
+    width: 75%;
+    margin: auto;
+}
+
 /*EDICIONES*/
 .contenedor-edicion-tarjeta {
     padding: 1.5em;
@@ -412,6 +522,18 @@ form label {
 }
 
 @media screen and (max-width: 991px) {
+    .busqueda input, .modal-filtros select {
+        width: 85% !important;
+    }
+
+    .seleccionar-etiquetas {
+        width: 90% !important;
+    }
+
+    .btn-filtrar-posteos-modal {
+        width: 60% !important;
+    }
+
     /*404*/
     #error-404 img {
         width: 50% !important;
@@ -441,10 +563,19 @@ form label {
         width: 60% !important;
         margin-bottom: 1em !important;
     }
+
+    .swal2-popup {
+        width: 90% !important;
+    }
 }
 
 /*HOME banner MOBILE breakpoint 767 -> 768 ya es tablet*/
 @media screen and (max-width: 767px) {
+    
+    .btn-filtrar-posteos-modal {
+        width: 70% !important;
+    }
+
     h2 {
         font-size: 2em !important;
     }
@@ -456,6 +587,7 @@ form label {
     p {
         font-size: 1.25em !important;
     }
+
 
     /*FOOTER*/
     #logo-footer {
@@ -492,6 +624,10 @@ form label {
 
     .filtrar-categoria {
         width: 75% !important;
+    }
+
+    .btn-filtrar-noticias {
+        width: 60% !important;
     }
 }
 

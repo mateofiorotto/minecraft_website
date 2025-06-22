@@ -23,7 +23,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/response-contact', [FrontendController::class, 'responseContact'])->name('response-contact');
     //si un user quiere entrar x url al response, redirigir al contact    
     Route::get('/response-contact', function () {
-    return redirect()->route('contact')->with('feedback.message', 'Debes enviar el formulario correctamente.');
+        return redirect()->route('contact')->with('feedback.message', 'Debes enviar el formulario correctamente.');
     });
     Route::get('/acquired', [FrontendController::class, 'acquired'])->name('acquired');
     Route::get('/refunded', [FrontendController::class, 'refunded'])->name('refunded');

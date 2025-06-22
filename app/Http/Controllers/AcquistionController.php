@@ -12,6 +12,12 @@ use Illuminate\Support\Facades\Mail;
 
 class AcquistionController extends Controller
 {
+    /**
+     * Guarda una nueva compra de un usuario y envia un mail de confirmacion
+     * 
+     * @param id ID de la edicion
+     * @return Vista buyed
+     */
     public function buyEdition($id)
     {
         $user = Auth::user();
@@ -32,6 +38,12 @@ class AcquistionController extends Controller
         return redirect()->route('acquired');
     }
 
+    /**
+     * Procesa un reembolso de una compra y envia un mail
+     * 
+     * @param id ID de la edicion
+     * @return Vista refunded
+     */
     public function refundEdition($id)
     {
         $user = Auth::user();

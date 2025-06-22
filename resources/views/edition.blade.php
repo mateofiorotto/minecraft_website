@@ -30,7 +30,10 @@
                             <form action="{{ route('refund-edition', $edition->id) }}" method="POST">
                                 @csrf
                                 @method('POST')
-                                <button type="submit" class="reembolsar-edicion-btn">Reembolsar</button>
+                                <button type="submit" class="reembolsar-edicion-btn"
+                                    onclick="this.disabled = true; this.classList.add('btn-disabled'); this.form.submit();">
+                                    Reembolsar
+                                </button>
                             </form>
                         </div>
                     @else
@@ -38,7 +41,10 @@
                             <form action="{{ route('buy-edition', $edition->id) }}" method="POST">
                                 @csrf
                                 @method('POST')
-                                <button type="submit" class="comprar-edicion-btn">Comprar</button>
+                                <button type="submit" class="comprar-edicion-btn"
+                                    onclick="this.disabled = true; this.classList.add('btn-disabled'); this.form.submit();">
+                                    Comprar
+                                </button>
                             </form>
                         </div>
                     @endif

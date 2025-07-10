@@ -8,6 +8,7 @@ use App\Http\Controllers\AdminUsersController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\AdminTagsController;
 use App\Http\Controllers\AcquistionController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,7 +21,7 @@ Route::get('/editions/{id}', [FrontendController::class, 'editionById'])->name('
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/contact', [FrontendController::class, 'contact'])->name('contact');
-    Route::post('/response-contact', [FrontendController::class, 'responseContact'])->name('response-contact');
+    Route::post('/response-contact', [FrontendController::class, 'responseContact'])->name('response.contact');
     //si un user quiere entrar x url al response, redirigir al contact    
     Route::get('/response-contact', function () {
         return redirect()->route('contact')->with('feedback.message', 'Debes enviar el formulario correctamente.');
@@ -28,8 +29,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/acquired', [FrontendController::class, 'acquired'])->name('acquired');
     Route::get('/refunded', [FrontendController::class, 'refunded'])->name('refunded');
    
-    Route::post('/buy-edition/{id}', [AcquistionController::class, 'buyEdition'])->name('buy-edition');
-    Route::post('/refunded-edition/{id}', [AcquistionController::class, 'refundEdition'])->name('refund-edition');
+    Route::post('/buy-edition/{id}', [AcquistionController::class, 'buyEdition'])->name('buy.edition');
+    Route::post('/refunded-edition/{id}', [AcquistionController::class, 'refundEdition'])->name('refund.edition');
+
+    Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');
+    Route::get('/modify-profile-form', [ProfileController::class, 'modifyProfileForm'])->name('modify-profile');
+    Route::put('/modify-profile', [ProfileController::class, 'modifyProfile'])->name('modify.profile');
 });
 
 //rutas backend

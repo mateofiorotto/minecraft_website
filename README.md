@@ -344,8 +344,16 @@ Cambios realizados para el 2do parcial:
 - En usuarios, en el crud poner que ediciones adquiridas tiene. --> OK, NO SE PUEDEN CARGAR MANUALMENTE NI EDITAR YA QUE DE ESO SE ENCARGA EL SIST. DE COMPRAS Y REEMBOLSOS, TAMPOCO SE ELIMINAN DE LA DB DEBIDO A SOFT DELETES
 - Buscador - OK
 
-MAÑANA:
-- ESTILOS DE BUSCADOR y filtros
-- Video
+TO - DO:
+- Perfil usuarios, ver y editar su propia info (vista y nuevos metodos en el controlador). 
+
+  ProfileController. Vista de Perfil con botones de modificacion.
+
+- Pasarela de pago --> MP 
+-  Si el sitio es para la venta de un servicio o suscripción no es necesaria la integracion de carrito
+-- Los usuarios deben poder administrar su plan de suscripcion, incluyendo cancelarlo (en caso de videojuego reembolso), ver desde cuando lo compro.
+    En mi caso voy a poner en el perfil los juegos "comprados"
+- Dashboard --> agregar estadisticas relevantes (juego mas comprado, mes con mayor facturacion u otro)
+
 
 - modificar readme --> Para el final cuando tenga todo integrado

@@ -64,7 +64,7 @@
                         @else
                             <!-- Usuario autenticado -->
                             <li class="nav-item me-3">
-                                <span>{{ Auth::user()->name }}</span>
+                                <x-nav-link route="profile" class="btn btn-outline-primary px-3">{{ Auth::user()->name }}</x-nav-link>
                             </li>
 
                             <li>

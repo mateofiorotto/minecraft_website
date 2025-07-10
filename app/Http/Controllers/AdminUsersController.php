@@ -119,14 +119,18 @@ class AdminUsersController extends Controller
 
         $validated = $request->validate([
             'name' => 'required|min:3',
-            'password' => 'required|min:8|confirmed',
-            'role' => 'required',
+            'password' => 'nullable|min:8|confirmed',
+            'role' => 'required|in:user,admin',
         ]);
 
         $validated['username'] = $user['username'];
         $validated['email'] = $user['email'];
 
-        $validated['password'] = Hash::make($validated['password']);
+         if ($request->filled('password')) {
+            $validated['password'] = Hash::make($validated['password']);
+        } else {
+            unset($validated['password']);
+        }
 
         $user->update($validated);
 

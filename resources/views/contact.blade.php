@@ -23,7 +23,7 @@
             <p class="text-center">También puedes contactarnos en <a href="#footer">nuestras redes sociales</a></p>
         </div>
 
-        <form action="{{ route('response-contact') }}" method="POST" class="container mt-4 mb-5 pb-3"
+        <form action="{{ route('response.contact') }}" method="POST" class="container mt-4 mb-5 pb-3"
             enctype="multipart/form-data">
             @csrf
             @method('POST')

@@ -2,19 +2,7 @@
 <x-layout-admin>
     <x-slot:title>Editar Usuario: {{ $user->username }}</x-slot:title>
     <section class="container" id="edit-users">
-        <h2 class="mt-5 mb-5 text-center fw-bold">Editar Usuario</h2>
-        <p class="text-center mb-5">El admin no puede editar el usuario y mail de otros usuarios</p>
-        <div class="row justify-content-center align-items-center text-center">
-            <div class="col-lg-6 col-md-12 mb-5">
-                   <h3>Usuario</h3>
-                   <p>{{ $user->username }}</p>
-            </div>
-            <div class="col-lg-6 col-md-12 mb-5">
-                   <h3>Email</h3>
-                   <p>{{ $user->email }}</p>
-            </div>
-        </div>
-        
+        <h2 class="mt-5 mb-5 text-center fw-bold">Editar perfil</h2>        
 
         @if ($errors->any())
             <script>
@@ -32,12 +20,24 @@
             </script>
         @endif
 
-        <form action="{{ route('users.update', $user->id) }}" method="POST" enctype="multipart/form-data"
+        <form action="{{ route('modify.profile', $user->id) }}" method="POST" enctype="multipart/form-data"
             class="container mb-5">
             @csrf
             @method('PUT')
 
             <div class="row justify-content-center align-items-center">
+                <div class="col-lg-6 col-md-12 mb-3">
+                    <label for="username" class="form-label">Usuario<span class="obligatorio">*</span></label>
+                    <input type="text" name="username" id="username" class="form-control"
+                        value="{{ old('username', $user->username) }}">
+
+                    @if ($errors->has('usernamename'))
+                        <div class="mt-2 text-danger">
+                            <p>{{ $errors->first('username') }}</p>
+                        </div>
+                    @endif
+                </div>
+
                 <div class="col-lg-6 col-md-12 mb-3">
                     <label for="name" class="form-label">Nombre<span class="obligatorio">*</span></label>
                     <input type="text" name="name" id="name" class="form-control"
@@ -50,22 +50,20 @@
                     @endif
                 </div>
 
-                <div class="col-lg-6 col-md-12 mb-3">
-                    <label for="role" class="form-label">Rol<span class="obligatorio">*</span></label>
-                    <select name="role" id="role" class="form-select">
-                        <option value="user" {{ old('role') == '0' ? 'selected' : '' }}>Usuario</option>
-                        <option value="admin" {{ old('role') == '1' ? 'selected' : '' }}>Admin</option>
-                    </select>
+                <div class="col-lg-12 col-md-12 mb-3">
+                    <label for="email" class="form-label">Email<span class="obligatorio">*</span></label>
+                    <input type="text" name="email" id="email" class="form-control"
+                        value="{{ old('email', $user->email) }}">
 
-                    @if ($errors->has('role'))
+                    @if ($errors->has('email'))
                         <div class="mt-2 text-danger">
-                            <p>{{ $errors->first('role') }}</p>
+                            <p>{{ $errors->first('email') }}</p>
                         </div>
                     @endif
                 </div>
 
                 <div class="col-lg-6 col-md-12 mb-5">
-                    <label for="password" class="form-label">Contraseña<span class="obligatorio">*</span></label>
+                    <label for="password" class="form-label">Contraseña</label>
                     <input type="password" name="password" id="password" class="form-control">
 
                     @if ($errors->has('password'))

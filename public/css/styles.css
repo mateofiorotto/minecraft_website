@@ -539,6 +539,43 @@ form label {
     background-color: #3c9f2f !important;
 }
 
+.mis-compras {
+    background-color: black;
+    border-bottom: 1px solid white !important;
+}
+
+.contenedor-edicion-tarjeta-mis-juegos, .edicion-tarjeta-mis-juegos-img  {
+    border: 1px solid white !important;
+
+}
+
+.reembolsar-edicion-btn-mis-juegos {
+    background-color: rgb(255, 0, 0) !important;
+    transition: all 0.2s ease-in-out;
+    border: none !important;
+    margin: 2em auto !important;
+    font-size: 1.2em !important;
+    font-weight: bold !important;
+    text-transform: uppercase !important;
+    transition: all 0.3s ease-in-out;
+    padding: 1em !important;
+    text-decoration: none !important;
+    color: white;
+    display: block;
+    width: 80%;
+    transition: all 0.3s ease-in-out;
+}
+
+.reembolsar-edicion-btn-mis-juegos:hover {
+    background-color: rgb(32, 129, 190) !important;
+}
+
+.edicion-adquirida-badge-mis-juegos {
+    border: 1px solid white !important;
+
+}
+
+
 @media screen and (max-width: 991px) {
     .busqueda input, .modal-filtros select {
         width: 85% !important;

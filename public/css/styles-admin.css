@@ -85,6 +85,7 @@ header a {
     color: #3c9f2f !important;
 }
 
+
 /*crud*/
 .encabezados {
   background-color: #3c9f2f !important;
@@ -195,6 +196,12 @@ form label {
 
 .lista-dashboard a:hover {
   color: #3c9f2f !important;
+}
+
+.estadistica {
+  font-size: 3em !important;
+  color:#3c9f2f !important;
+  font-weight: bold !important;
 }
 
 @media screen and (max-width: 575px) {

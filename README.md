@@ -345,15 +345,9 @@ Cambios realizados para el 2do parcial:
 - Buscador - OK
 
 TO - DO:
-- Perfil usuarios, ver y editar su propia info (vista y nuevos metodos en el controlador). 
+- Perfil usuarios, ver y editar su propia info (vista y nuevos metodos en el controlador). - OK
+- Dashboard --> agregar estadisticas relevantes (Cantidad de compras, cantidad de usuarios, juego mas comprado) - OK
 
-  ProfileController. Vista de Perfil con botones de modificacion.
 
 - Pasarela de pago --> MP 
--  Si el sitio es para la venta de un servicio o suscripción no es necesaria la integracion de carrito
--- Los usuarios deben poder administrar su plan de suscripcion, incluyendo cancelarlo (en caso de videojuego reembolso), ver desde cuando lo compro.
-    En mi caso voy a poner en el perfil los juegos "comprados"
-- Dashboard --> agregar estadisticas relevantes (juego mas comprado, mes con mayor facturacion u otro)
-
-
 - modificar readme --> Para el final cuando tenga todo integrado

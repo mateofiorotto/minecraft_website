@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\Edition;
 use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
@@ -13,7 +15,14 @@ class ProfileController extends Controller
      * @return Vista profile
      */
     public function profile(){
-        return view('profile', ['user' => auth()->user()]);
+        $user = auth()->user();
+
+        $editions = $user->editions()->withPivot('status', 'buy_date')->get();
+
+        return view('profile', [
+            'user' => $user,
+            'editions' => $editions,
+        ]);
     }
 
     /**

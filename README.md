@@ -344,13 +344,4 @@ Cambios realizados para el 2do parcial:
 - En usuarios, en el crud poner que ediciones adquiridas tiene. --> OK, NO SE PUEDEN CARGAR MANUALMENTE NI EDITAR YA QUE DE ESO SE ENCARGA EL SIST. DE COMPRAS Y REEMBOLSOS, TAMPOCO SE ELIMINAN DE LA DB DEBIDO A SOFT DELETES
 - Buscador - OK
 
-TO - DO:
-- Perfil usuarios, ver y editar su propia info (vista y nuevos metodos en el controlador). - OK
-- Dashboard --> agregar estadisticas relevantes (Cantidad de compras, cantidad de usuarios, juego mas comprado) - OK
-
-
-- Pasarela de pago --> MP 
-  - cambiar test test al comprar
-  - cambiar redirigiendo a .
-  - webhooks
 - modificar readme --> Para el final cuando tenga todo integrado

@@ -37,7 +37,7 @@ class AcquisitionController extends Controller
 
         session()->flash('edition_id', $id);
 
-        //Mail::to($user->email)->send(new BuyConfirmation($user, $edition));
+        Mail::to($user->email)->send(new BuyConfirmation($user, $edition));
 
         return redirect()->route('acquired');
     }
@@ -61,7 +61,7 @@ class AcquisitionController extends Controller
 
         session()->flash('edition_id', $id);
 
-        //Mail::to($user->email)->send(new RefundConfirmation($user, $edition));
+        Mail::to($user->email)->send(new RefundConfirmation($user, $edition));
 
         return redirect()->route('refunded');
     }

@@ -114,11 +114,11 @@ class AcquisitionController extends Controller
 
     public function handleMPFailure(Request $request, $id)
     {
-        return redirect()->route('failure');
+        return view(view: 'failure');
     }
 
     public function handleMPPending(Request $request, $id)
     {
-        return redirect()->route('pending');
+        return view(view: 'pending');
     }
 }

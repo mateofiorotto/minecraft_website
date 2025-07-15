@@ -1,8 +1,11 @@
 @php
-    $usuario = auth()->user(); //obtener el usuario logueado
-
-    //obtener las ediciones compradas del usuario, si no hay usuario se guarda vacio (para evitar errores)
-    $edicionesCompradas = $usuario ? $usuario->editions->where('pivot.status', 'buyed')->pluck('id')->toArray() : [];
+    $usuario = auth()->user();
+    $edicionesCompradas = $usuario && $usuario->editions
+        ? $usuario->editions
+            ->filter(fn($e) => $e->pivot->status === 'buyed')
+            ->pluck('id')
+            ->toArray()
+        : [];
 @endphp
 
 <x-layout>

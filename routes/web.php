@@ -7,9 +7,11 @@ use App\Http\Controllers\AdminEditionsController;
 use App\Http\Controllers\AdminUsersController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\AdminTagsController;
-use App\Http\Controllers\AcquistionController;
+use App\Http\Controllers\AcquisitionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AuthController;
+use App\Models\Acquisition;
+use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Support\Facades\Route;
 
 //rutas para el frontend
@@ -27,15 +29,24 @@ Route::group(['middleware' => ['auth']], function () {
         return redirect()->route('contact')->with('feedback.message', 'Debes enviar el formulario correctamente.');
     });
     Route::get('/acquired', [FrontendController::class, 'acquired'])->name('acquired');
+    Route::get('/pending', [FrontendController::class, 'pending'])->name('pending');
+    Route::get('/failure', [FrontendController::class, 'failure'])->name('failure');
     Route::get('/refunded', [FrontendController::class, 'refunded'])->name('refunded');
    
-    Route::post('/buy-edition/{id}', [AcquistionController::class, 'buyEdition'])->name('buy.edition');
-    Route::post('/refunded-edition/{id}', [AcquistionController::class, 'refundEdition'])->name('refund.edition');
+    Route::post('/buy-edition/{id}', [AcquisitionController::class, 'buyEdition'])->name('buy.edition');
+    Route::post('/refunded-edition/{id}', [AcquisitionController::class, 'refundEdition'])->name('refund.edition');
 
     Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');
     Route::get('/modify-profile-form', [ProfileController::class, 'modifyProfileForm'])->name('modify-profile');
     Route::put('/modify-profile', [ProfileController::class, 'modifyProfile'])->name('modify.profile');
+
+    //mp
+    Route::post('/editions/{id}/mp', [AcquisitionController::class, 'redirectToMP'])->name('mp.redirect');
+     Route::get('/editions/{id}/success', [AcquisitionController::class, 'handleMPSuccess'])->name('mp.success');
+    Route::get('/editions/{id}/failure', [AcquisitionController::class, 'handleMPFailure'])->name('mp.failure');
+    Route::get('/editions/{id}/pending', [AcquisitionController::class, 'handleMPPending'])->name('mp.pending');
 });
+
 
 //rutas backend
 //Dashboard

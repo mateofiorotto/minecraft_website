@@ -20,45 +20,37 @@
         <h2 class="mt-5 mb-3 text-center">Mis Juegos</h2>
         <div id="ediciones-juegos" class="m-auto pt-5 container pb-5 row justify-content-center">
             @if ($editions->isEmpty())
-                <p class="text-center mb-5">No hay ediciones disponibles por el momento.</p>
+                <p class="text-center mb-5">Todavía no compraste ningún juego.</p>
             @else
-                @if (empty($edicionesCompradas))
-                    <p class="text-center mb-5">Todavía no compraste ningún juego.</p>
-                @endif
-
                 @foreach ($editions as $edition)
-                    @php
-                        $comprado = in_array($edition->id, $edicionesCompradas);
-                    @endphp
-                    @if ($comprado)
-                        <div class="col-md-12 col-lg-4 mb-4 animar-tarjeta positon-relative">
-
-                            <div class="position-absolute edicion-adquirida-badge edicion-adquirida-badge-mis-juegos">
-                                <span class="badge">Adquirido</span>
-                            </div>
-
-
-                            <a class="edicion-tarjeta" href="{{ route('edition', $edition->id) }}">
-                                <img class="edicion-tarjeta-mis-juegos-img img-fluid" src="{{ asset('storage/' . $edition->image) }}"
-                                    alt="{{ $edition->title }}">
-                                <div
-                                    class="text-break contenedor-edicion-tarjeta contenedor-edicion-tarjeta-mis-juegos">
-                                    <h3 class="text-center">{{ $edition->title }}</h3>
-                                    <p class="text-center mt-4">
-                                        <strong>Fecha de compra:</strong>
-                                        {{ optional($edition->pivot->buy_date ? \Carbon\Carbon::parse($edition->pivot->buy_date) : null)->format('d/m/Y') ?? 'Desconocida' }}
-                                    </p>
-                                    <form action="{{ route('edition', $edition->id) }}" method="POST">
-                                        @csrf
-                                        @method('GET')
-                                        <button type="submit" class="reembolsar-edicion-btn-mis-juegos">
-                                            Reembolsar
-                                        </button>
-                                    </form>
-                                </div>
-                            </a>
+                    <div class="col-md-12 col-lg-4 mb-4 animar-tarjeta positon-relative">
+                        <div class="position-absolute edicion-adquirida-badge edicion-adquirida-badge-mis-juegos">
+                            <span class="badge">Adquirido</span>
                         </div>
-                    @endif
+
+                        <a class="edicion-tarjeta" href="{{ route('edition', $edition->id) }}">
+                            <img class="edicion-tarjeta-mis-juegos-img img-fluid"
+                                src="{{ asset('storage/' . $edition->image) }}" alt="{{ $edition->title }}">
+                            <div class="text-break contenedor-edicion-tarjeta contenedor-edicion-tarjeta-mis-juegos">
+                                <h3 class="text-center">{{ $edition->title }}</h3>
+                                <p class="text-center mt-4">
+                                    <strong>Fecha de compra:</strong>
+                                    @if ($edition->pivot->buy_date)
+                                        {{ \Carbon\Carbon::parse($edition->pivot->buy_date)->format('d/m/Y') }}
+                                    @else
+                                        Desconocida
+                                    @endif
+                                </p>
+                                <form action="{{ route('edition', $edition->id) }}" method="POST">
+                                    @csrf
+                                    @method('GET')
+                                    <button type="submit" class="reembolsar-edicion-btn-mis-juegos">
+                                        Reembolsar
+                                    </button>
+                                </form>
+                            </div>
+                        </a>
+                    </div>
                 @endforeach
             @endif
         </div>

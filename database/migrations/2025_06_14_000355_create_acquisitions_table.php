@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('edition_id')->constrained()->onDelete('cascade');
             $table->timestamp('buy_date')->nullable();
-            $table->enum('status', ['buyed', 'refunded']);
+            $table->enum('status', ['buyed', 'refunded', 'pending', 'cancelled']);
             $table->timestamps();
         });
     }

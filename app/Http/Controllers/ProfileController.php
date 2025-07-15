@@ -17,12 +17,16 @@ class ProfileController extends Controller
     public function profile(){
         $user = auth()->user();
 
-        $editions = $user->editions()->withPivot('status', 'buy_date')->get();
+    // Solo las ediciones compradas
+    $editions = $user->editions()
+        ->wherePivot('status', 'buyed')
+        ->withPivot('status', 'buy_date')
+        ->get();
 
-        return view('profile', [
-            'user' => $user,
-            'editions' => $editions,
-        ]);
+    return view('profile', [
+        'user' => $user,
+        'editions' => $editions,
+    ]);
     }
 
     /**

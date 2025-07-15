@@ -1,10 +1,28 @@
 @php
     $usuario = auth()->user();
-    $adquisicion = $usuario?->editions->firstWhere('id', $edition->id)?->pivot;
+    $ediciones = $usuario?->editions ?? collect(); //si es null, lo convierte en coleccion vacia
+    $adquisicion = $ediciones->firstWhere('id', $edition->id)?->pivot;
 @endphp
 
 <x-layout>
     <x-slot:title> {{ $edition->title }} </x-slot:title>
+
+    @if (session()->has('feedback.message'))
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    Swal.fire({
+                        icon: 'error',
+                        title: '¡Error!',
+                        html: `{!! session()->get('feedback.message') !!}`,
+                        background: '#533c14',
+                        color: '#ffffff',
+                        confirmButtonColor: '#3c9f2f',
+                        confirmButtonText: 'Aceptar'
+                    });
+                });
+            </script>
+        @endif
+
     <section id="edition" class="mt-5">
         <div class="container pt-5 pb-5">
             <div class="pt-5 pb-5">
@@ -38,9 +56,8 @@
                         </div>
                     @else
                         <div data-aos="fade-left" class="text-center mt-3 pt-3">
-                            <form action="{{ route('buy.edition', $edition->id) }}" method="POST">
+                            <form action="{{ route('mp.redirect', $edition->id) }}" method="POST">
                                 @csrf
-                                @method('POST')
                                 <button type="submit" class="comprar-edicion-btn"
                                     onclick="this.disabled = true; this.classList.add('btn-disabled'); this.form.submit();">
                                     Comprar

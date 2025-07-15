@@ -5,8 +5,9 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Models\Acquisition;
 use Illuminate\Notifications\Notifiable;
-Use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
 {
@@ -51,9 +52,22 @@ class User extends Authenticatable
         ];
     }
 
-    public function editions(){
-        return $this->belongsToMany(Edition::class, 'acquisitions')
-                ->withPivot('buy_date', 'status')
-                ->withTimestamps();
-    }
+    public function editions()
+{
+    return $this->belongsToMany(Edition::class, 'acquisitions')
+        ->withPivot(['status', 'buy_date'])
+        ->withTimestamps();
+}
+
+    // public function acquisitions()
+    // {
+    //     return $this->hasMany(Acquisition::class, 'user_id', 'id');
+    // }
+
+    // public function editions()
+    // {
+    //     return $this->belongsToMany(Edition::class, 'acquisitions')
+    //         ->withPivot('buy_date', 'status')
+    //         ->withTimestamps();
+    // }
 }

@@ -350,4 +350,7 @@ TO - DO:
 
 
 - Pasarela de pago --> MP 
+  - cambiar test test al comprar
+  - cambiar redirigiendo a .
+  - webhooks
 - modificar readme --> Para el final cuando tenga todo integrado

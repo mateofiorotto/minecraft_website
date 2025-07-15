@@ -176,6 +176,56 @@ class FrontendController extends Controller
         return view('acquired', ['edition' => $edition, 'user' => $user]);
     }
 
+     /**
+     * Retornar la vista de edicion pendiente al frontend
+     * 
+     * @return Vista pending
+     */
+     public function pending()
+    {
+        $user = Auth::user();
+        $editionId = session('edition_id');
+
+        // Si alguien entra directamente sin sesión redirigir
+        if (!$editionId) {
+            return redirect()->route('home');
+        }
+
+        $edition = Edition::find($editionId);
+
+        //si intenta entrar x url, ir a home
+        if (!$edition) {
+            return redirect()->route('home');
+        }
+
+        return view('pending', ['edition' => $edition, 'user' => $user]);
+    }
+
+     /**
+     * Retornar la vista de compra de edicion fallida al frontend
+     * 
+     * @return Vista failure
+     */
+     public function failure()
+    {
+        $user = Auth::user();
+        $editionId = session('edition_id');
+
+        // Si alguien entra directamente sin sesión redirigir
+        if (!$editionId) {
+            return redirect()->route('home');
+        }
+
+        $edition = Edition::find($editionId);
+
+        //si intenta entrar x url, ir a home
+        if (!$edition) {
+            return redirect()->route('home');
+        }
+
+        return view('failure', ['edition' => $edition, 'user' => $user]);
+    }
+
     /**
      * Retornar la vista de edicion reembolsada al frontend
      * 

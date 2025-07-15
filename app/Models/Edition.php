@@ -21,7 +21,7 @@ class Edition extends Model
     public function users()
     {
         return $this->belongsToMany(User::class, 'acquisitions')
-            ->withPivot('buy_date', 'status')
+            ->withPivot(['status', 'buy_date'])
             ->withTimestamps();
     }
 }
